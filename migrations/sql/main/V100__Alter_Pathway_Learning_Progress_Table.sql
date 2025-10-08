@@ -1,0 +1,2 @@
+ALTER TABLE fact_pathway_learning_progress DROP COLUMN is_additional_resource;
+ALTER TABLE fact_pathway_learning_progress DROP COLUMN is_in_class_game_experience;

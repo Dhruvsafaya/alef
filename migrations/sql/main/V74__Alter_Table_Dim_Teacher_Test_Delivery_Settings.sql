@@ -1,0 +1,1 @@
+ALTER TABLE dim_teacher_test_delivery_settings ALTER COLUMN ttds_title type VARCHAR(255);

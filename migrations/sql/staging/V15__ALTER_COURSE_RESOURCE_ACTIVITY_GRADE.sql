@@ -1,0 +1,2 @@
+ALTER TABLE rel_course_resource_activity_grade_association DROP COLUMN craga_grade_id;
+ALTER TABLE rel_course_resource_activity_grade_association ADD COLUMN craga_grade_id varchar(5);

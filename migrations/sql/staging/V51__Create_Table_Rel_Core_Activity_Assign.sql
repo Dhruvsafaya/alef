@@ -1,0 +1,21 @@
+CREATE TABLE rel_core_activity_assign (
+  cta_dw_id BIGINT,
+  cta_event_type VARCHAR(100),
+  cta_id VARCHAR(36),
+  cta_created_time TIMESTAMP,
+  cta_dw_created_time TIMESTAMP,
+  cta_status SMALLINT,
+  cta_active_until TIMESTAMP,
+  cta_action_time TIMESTAMP,
+  cta_start_date VARCHAR(10),
+  cta_end_date VARCHAR(10),
+  cta_ay_tag VARCHAR(10),
+  cta_tenant_id VARCHAR(36),
+  cta_student_id VARCHAR(36),
+  cta_course_id VARCHAR(36),
+  cta_class_id VARCHAR(36),
+  cta_teacher_id VARCHAR(36),
+  cta_activity_id VARCHAR(36),
+  cta_activity_type VARCHAR(20),
+  cta_progress_status VARCHAR(30)
+);

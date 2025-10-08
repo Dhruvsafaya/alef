@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS staging_assessment_lock_action (
+  dw_id BIGINT,
+  _trace_id VARCHAR(36),
+  event_type VARCHAR(36),
+  created_time TIMESTAMP,
+  dw_created_time TIMESTAMP,
+  date_dw_id BIGINT,
+  id VARCHAR(36),
+  tenant_id VARCHAR(36),
+  academic_year_tag VARCHAR(10),
+  attempt BIGINT,
+  teacher_id VARCHAR(36),
+  candidate_id VARCHAR(36),
+  school_id VARCHAR(36),
+  class_id VARCHAR(36),
+  test_part_session_id VARCHAR(36),
+  test_level_name VARCHAR(20),
+  test_level_id VARCHAR(36),
+  test_level_version BIGINT,
+  skill VARCHAR(50),
+  subject VARCHAR(50)
+);

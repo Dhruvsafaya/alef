@@ -1,0 +1,45 @@
+version: '3'
+
+networks:
+  alef-data-platform:
+    driver: bridge
+
+services:
+  zookeeper:
+    image: 'bitnami/zookeeper:3.8'
+    ports:
+      - 2181:2181
+    volumes:
+      - ${DATA_DIR}/zookeeper:/bitnami/zookeeper
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka:
+    image: 'bitnami/kafka:3.4.0'
+    ports:
+      - 9092:9092
+      - ${HOST_KAFKA_PORT}:${HOST_KAFKA_PORT}
+    volumes:
+      - ${DATA_DIR}/kafka:/bitnami/kafka
+    depends_on:
+      - zookeeper
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_ENABLE_KRAFT=no
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:${HOST_KAFKA_PORT}
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:${HOST_KAFKA_PORT}
+      - KAFKA_INTER_BROKER_LISTENER_NAME=CLIENT
+  localstack:
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - ${DATA_DIR}/localstack:/tmp/localstack/data
+      - "/var/run/docker.sock:/var/run/docker.sock"

@@ -1,0 +1,1 @@
+ALTER TABLE staging_ebook_progress RENAME COLUMN fep_content_id TO fep_step_instance_step_id;

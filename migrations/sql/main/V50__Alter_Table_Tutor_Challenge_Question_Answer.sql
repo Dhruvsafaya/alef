@@ -1,0 +1,3 @@
+ALTER TABLE fact_tutor_challenge_question_answer RENAME COLUMN ftcqg_bot_question_id to ftcqa_bot_question_id;
+ALTER TABLE fact_tutor_challenge_question_answer ADD COLUMN ftcqa_user_attempt_source varchar(20);
+ALTER TABLE fact_tutor_challenge_question_answer ADD COLUMN ftcqa_user_attempt_id varchar(36);

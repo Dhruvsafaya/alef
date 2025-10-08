@@ -1,0 +1,1 @@
+ALTER TABLE dim_section ALTER COLUMN section_name TYPE VARCHAR(256);

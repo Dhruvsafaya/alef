@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS dim_avatar_layer_customization_v2;
+DROP TABLE IF EXISTS dim_avatar_layer_customization_v22;
+DROP TABLE IF EXISTS dim_avatar_v2;
+DROP TABLE IF EXISTS dim_avatar_v22;
+DROP TABLE IF EXISTS dim_pathway_target_v2;
+DROP TABLE IF EXISTS dim_pathway_target_v22;
+DROP TABLE IF EXISTS dim_staff_user_school_role_association_v2;
+DROP TABLE IF EXISTS dim_staff_user_v2;
+DROP TABLE IF EXISTS dim_test_part_v2;
+DROP TABLE IF EXISTS fact_activity_setting_v2;
+DROP TABLE IF EXISTS fact_item_purchase_v2;
+DROP TABLE IF EXISTS fact_task_center_v2;
+DROP TABLE IF EXISTS fact_teacher_test_candidate_progress_v2;

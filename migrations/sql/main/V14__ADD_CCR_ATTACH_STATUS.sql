@@ -1,0 +1,1 @@
+alter table dim_course_content_repository_association add column ccr_attach_status int;

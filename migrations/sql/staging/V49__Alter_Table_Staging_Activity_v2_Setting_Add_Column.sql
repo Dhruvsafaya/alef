@@ -1,0 +1,1 @@
+ALTER TABLE staging_activity_setting_v2 ADD COLUMN trace_id VARCHAR(36);

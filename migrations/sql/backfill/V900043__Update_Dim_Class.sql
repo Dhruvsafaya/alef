@@ -1,0 +1,2 @@
+UPDATE alefdw.dim_class set class_gen_subject='Social Studies' where class_gen_subject='Social_Studies';
+UPDATE alefdw.dim_class set class_gen_subject='Islamic Studies' where class_gen_subject='Islamic_Studies';

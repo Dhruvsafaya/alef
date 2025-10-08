@@ -1,0 +1,242 @@
+<form theme="dark">
+    <label>Teacher Activity in Alef Platform</label>
+    <fieldset submitButton="false">
+        <input type="dropdown" token="tenant_id" searchWhenChanged="true">
+            <label>Organization</label>
+            <choice value="*">Select</choice>
+            <fieldForLabel>tenant_name</fieldForLabel>
+            <fieldForValue>tenant_id</fieldForValue>
+            <change>
+                <set token="form.school_id">*</set>
+            </change>
+            <search>
+                <query>|inputlookup prod_students.csv | table tenant_id, tenant_name | dedup tenant_id, tenant_name</query>
+                <earliest>0</earliest>
+                <latest></latest>
+            </search>
+            <default>93e4949d-7eff-4707-9201-dac917a5e013</default>
+            <initialValue>*</initialValue>
+        </input>
+        <input type="dropdown" token="school_id">
+            <label>School</label>
+            <choice value="*">Select</choice>
+            <default>*</default>
+            <initialValue>*</initialValue>
+            <change>
+                <condition value="*">
+                    <unset token="show_details"></unset>
+                </condition>
+            </change>
+            <fieldForLabel>school_name</fieldForLabel>
+            <fieldForValue>school_id</fieldForValue>
+            <search>
+                <query>|inputlookup prod_teachers.csv where tenant_id="$tenant_id$" |table school_name,school_id | dedup school_id| sort school_name</query>
+                <earliest>0</earliest>
+                <latest></latest>
+            </search>
+        </input>
+        <input type="time" searchWhenChanged="true" token="time_picker">
+            <label>Time Range</label>
+            <default>
+                <earliest>@d</earliest>
+                <latest>now</latest>
+            </default>
+        </input>
+    </fieldset>
+    <row>
+        <panel>
+            <title>Active Teachers</title>
+            <single>
+                <search>
+                    <query>index="teacher_xapi" tenant_id="$tenant_id$" school_id="$school_id$" | table teacher_id | stats dc(teacher_id)</query>
+                    <earliest>$time_picker.earliest$</earliest>
+                    <latest>$time_picker.latest$</latest>
+                    <sampleRatio>1</sampleRatio>
+                </search>
+                <option name="colorBy">value</option>
+                <option name="colorMode">block</option>
+                <option name="drilldown">none</option>
+                <option name="height">102</option>
+                <option name="numberPrecision">0</option>
+                <option name="rangeColors">["0x53a051","0x53a051"]</option>
+                <option name="rangeValues">[0]</option>
+                <option name="refresh.display">progressbar</option>
+                <option name="showSparkline">1</option>
+                <option name="showTrendIndicator">1</option>
+                <option name="trellis.enabled">0</option>
+                <option name="trellis.scales.shared">1</option>
+                <option name="trellis.size">medium</option>
+                <option name="trendColorInterpretation">standard</option>
+                <option name="trendDisplayMode">absolute</option>
+                <option name="unitPosition">before</option>
+                <option name="useColors">1</option>
+                <option name="useThousandSeparators">1</option>
+            </single>
+        </panel>
+        <panel>
+            <title>Active Percentage</title>
+            <chart>
+                <search>
+                    <query>| inputlookup prod_teachers.csv where  tenant_id="$tenant_id$" school_id="$school_id$" | table teacher_id | stats dc(teacher_id) as total | appendcols [ search index="teacher_xapi" tenant_id="$tenant_id$" school_id="$school_id$" earliest="$time_picker.earliest$" latest="$time_picker.latest$" | table teacher_id| stats dc(teacher_id) as active] | eval ratio=ceil((active/total)*100) | table ratio</query>
+                    <earliest>0</earliest>
+                    <latest></latest>
+                </search>
+                <option name="charting.chart">radialGauge</option>
+                <option name="charting.chart.rangeValues">[0,30,70,100]</option>
+                <option name="charting.chart.style">shiny</option>
+                <option name="charting.gaugeColors">["0xdc4e41","0xf1813f","0x53a051"]</option>
+                <option name="refresh.display">progressbar</option>
+            </chart>
+        </panel>
+        <panel>
+            <title>Inactive Teachers</title>
+            <single>
+                <search>
+                    <query>| inputlookup prod_teachers.csv where tenant_id="$tenant_id$" school_id="$school_id$" | table teacher_id | stats dc(teacher_id) as total | appendcols [ search index="teacher_xapi" tenant_id="$tenant_id$" school_id="$school_id$" earliest="$time_picker.earliest$" latest="$time_picker.latest$" | table teacher_id| stats dc(teacher_id) as active] | eval inactive=(total - active) | table inactive</query>
+                    <earliest>0</earliest>
+                    <latest></latest>
+                    <sampleRatio>1</sampleRatio>
+                </search>
+                <option name="colorBy">value</option>
+                <option name="colorMode">block</option>
+                <option name="drilldown">none</option>
+                <option name="height">99</option>
+                <option name="numberPrecision">0</option>
+                <option name="rangeColors">["0xdc4e41","0xdc4e41"]</option>
+                <option name="rangeValues">[0]</option>
+                <option name="refresh.display">progressbar</option>
+                <option name="showSparkline">1</option>
+                <option name="showTrendIndicator">1</option>
+                <option name="trellis.enabled">0</option>
+                <option name="trellis.scales.shared">1</option>
+                <option name="trellis.size">medium</option>
+                <option name="trendColorInterpretation">standard</option>
+                <option name="trendDisplayMode">absolute</option>
+                <option name="unitPosition">after</option>
+                <option name="useColors">1</option>
+                <option name="useThousandSeparators">1</option>
+            </single>
+        </panel>
+    </row>
+    <row>
+        <panel>
+            <title>Active percentage per School</title>
+            <chart>
+                <search>
+                    <query>|inputlookup prod_teachers.csv where tenant_id="$tenant_id$" school_id="$school_id$" | table teacher_id, school_name,school_id| stats dc(teacher_id) as total by school_name,school_id | join type=left school_id [search index="teacher_xapi"  tenant_id="$tenant_id$" school_id="$school_id$" earliest="$time_picker.earliest$" latest="$time_picker.latest$"| table teacher_id,school_name,school_id| stats dc(teacher_id) as active by school_name,school_id] |fillnull active value=0 | eval ratio=ceil((active/total)*100) | table school_name, ratio,school_id | sort ratio</query>
+                    <earliest>0</earliest>
+                    <latest></latest>
+                </search>
+                <option name="charting.axisLabelsX.majorLabelStyle.rotation">-90</option>
+                <option name="charting.axisLabelsY.majorUnit">50</option>
+                <option name="charting.axisTitleX.text">School Name</option>
+                <option name="charting.axisTitleX.visibility">visible</option>
+                <option name="charting.axisTitleY.text">Active Percentage</option>
+                <option name="charting.axisTitleY.visibility">visible</option>
+                <option name="charting.axisTitleY2.visibility">visible</option>
+                <option name="charting.axisY.abbreviation">none</option>
+                <option name="charting.axisY.maximumNumber">100</option>
+                <option name="charting.axisY.minimumNumber">0</option>
+                <option name="charting.axisY.scale">linear</option>
+                <option name="charting.chart">column</option>
+                <option name="charting.chart.showDataLabels">none</option>
+                <option name="charting.chart.stackMode">stacked</option>
+                <option name="charting.drilldown">all</option>
+                <option name="charting.legend.placement">none</option>
+                <option name="charting.seriesColors">[0xFF9225]</option>
+                <option name="height">322</option>
+                <option name="refresh.display">progressbar</option>
+                <option name="trellis.enabled">0</option>
+                <drilldown>
+                    <set token="form.school_id">$row.school_id$</set>
+                </drilldown>
+            </chart>
+        </panel>
+    </row>
+    <row>
+        <panel>
+            <viz type="leaflet_maps_app.maps-plus">
+                <search>
+                    <query>|inputlookup prod_teachers.csv where tenant_id="$tenant_id$" school_id="$school_id$" | table teacher_id, school_name,school_id,school_latitude,school_longitude| stats dc(teacher_id) as total by school_name,school_id,school_latitude,school_longitude  | join type=left school_id [search index="teacher_xapi" tenant_id="$tenant_id$" school_id="$school_id$" earliest="$time_picker.earliest$" latest="$time_picker.latest$" | table teacher_id,school_name,school_id| stats dc(teacher_id) as active by school_name,school_id] |fillnull active value=0 | eval ratio=ceil((active/total)*100) | eval tooltip = school_name."::".ratio."% Active" , markerColor=if(ratio&gt;70,"green",if(ratio&gt;30, "orange", "red")) , latitude=school_latitude, longitude=school_longitude| table latitude,longitude, tooltip, markerColor, school_id</query>
+                    <earliest>0</earliest>
+                    <latest></latest>
+                </search>
+                <option name="drilldown">all</option>
+                <option name="leaflet_maps_app.maps-plus.allPopups">0</option>
+                <option name="leaflet_maps_app.maps-plus.animate">1</option>
+                <option name="leaflet_maps_app.maps-plus.autoFitAndZoom">0</option>
+                <option name="leaflet_maps_app.maps-plus.autoFitAndZoomDelay">500</option>
+                <option name="leaflet_maps_app.maps-plus.bingMaps">0</option>
+                <option name="leaflet_maps_app.maps-plus.bingMapsLabelLanguage">en-US</option>
+                <option name="leaflet_maps_app.maps-plus.bingMapsTileLayer">CanvasLight</option>
+                <option name="leaflet_maps_app.maps-plus.cluster">1</option>
+                <option name="leaflet_maps_app.maps-plus.contextMenu">1</option>
+                <option name="leaflet_maps_app.maps-plus.criticalThreshold">80</option>
+                <option name="leaflet_maps_app.maps-plus.defaultHeight">500</option>
+                <option name="leaflet_maps_app.maps-plus.disableClusteringAtZoom">0</option>
+                <option name="leaflet_maps_app.maps-plus.drilldown">1</option>
+                <option name="leaflet_maps_app.maps-plus.drilldownAction">click</option>
+                <option name="leaflet_maps_app.maps-plus.fullScreen">1</option>
+                <option name="leaflet_maps_app.maps-plus.googlePlacesPosition">topleft</option>
+                <option name="leaflet_maps_app.maps-plus.googlePlacesSearch">0</option>
+                <option name="leaflet_maps_app.maps-plus.googlePlacesZoomLevel">12</option>
+                <option name="leaflet_maps_app.maps-plus.heatmapBlur">15</option>
+                <option name="leaflet_maps_app.maps-plus.heatmapColorGradient">{"0.4":"blue","0.6":"cyan","0.7":"lime","0.8":"yellow","1":"red"}</option>
+                <option name="leaflet_maps_app.maps-plus.heatmapEnable">0</option>
+                <option name="leaflet_maps_app.maps-plus.heatmapMinOpacity">1.0</option>
+                <option name="leaflet_maps_app.maps-plus.heatmapOnly">0</option>
+                <option name="leaflet_maps_app.maps-plus.heatmapRadius">25</option>
+                <option name="leaflet_maps_app.maps-plus.i18nLanguage">en</option>
+                <option name="leaflet_maps_app.maps-plus.layerControl">1</option>
+                <option name="leaflet_maps_app.maps-plus.layerControlCollapsed">1</option>
+                <option name="leaflet_maps_app.maps-plus.mapCenterLat">24.4539</option>
+                <option name="leaflet_maps_app.maps-plus.mapCenterLon">54.3773</option>
+                <option name="leaflet_maps_app.maps-plus.mapCenterZoom">7</option>
+                <option name="leaflet_maps_app.maps-plus.mapTile">http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png</option>
+                <option name="leaflet_maps_app.maps-plus.maxClusterRadius">80</option>
+                <option name="leaflet_maps_app.maps-plus.maxSpiderfySize">100</option>
+                <option name="leaflet_maps_app.maps-plus.maxZoom">19</option>
+                <option name="leaflet_maps_app.maps-plus.measureActiveColor">#00ff00</option>
+                <option name="leaflet_maps_app.maps-plus.measureCompletedColor">#0066ff</option>
+                <option name="leaflet_maps_app.maps-plus.measureIconPosition">topright</option>
+                <option name="leaflet_maps_app.maps-plus.measureLocalization">en</option>
+                <option name="leaflet_maps_app.maps-plus.measurePrimaryAreaUnit">acres</option>
+                <option name="leaflet_maps_app.maps-plus.measurePrimaryLengthUnit">feet</option>
+                <option name="leaflet_maps_app.maps-plus.measureSecondaryAreaUnit">sqmiles</option>
+                <option name="leaflet_maps_app.maps-plus.measureSecondaryLengthUnit">miles</option>
+                <option name="leaflet_maps_app.maps-plus.measureTool">1</option>
+                <option name="leaflet_maps_app.maps-plus.minZoom">1</option>
+                <option name="leaflet_maps_app.maps-plus.multiplePopups">0</option>
+                <option name="leaflet_maps_app.maps-plus.pathColorList">#0003F0,#D43C29,darkgreen,0xe2d400,darkred,#23A378</option>
+                <option name="leaflet_maps_app.maps-plus.pathSplitInterval">60</option>
+                <option name="leaflet_maps_app.maps-plus.pathSplits">0</option>
+                <option name="leaflet_maps_app.maps-plus.permanentTooltip">0</option>
+                <option name="leaflet_maps_app.maps-plus.playbackSpeed">100</option>
+                <option name="leaflet_maps_app.maps-plus.playbackTickLength">50</option>
+                <option name="leaflet_maps_app.maps-plus.rangeOneBgColor">#B5E28C</option>
+                <option name="leaflet_maps_app.maps-plus.rangeOneFgColor">#6ECC39</option>
+                <option name="leaflet_maps_app.maps-plus.rangeThreeBgColor">#FD9C73</option>
+                <option name="leaflet_maps_app.maps-plus.rangeThreeFgColor">#F18017</option>
+                <option name="leaflet_maps_app.maps-plus.rangeTwoBgColor">#F1D357</option>
+                <option name="leaflet_maps_app.maps-plus.rangeTwoFgColor">#F0C20C</option>
+                <option name="leaflet_maps_app.maps-plus.refreshInterval">0</option>
+                <option name="leaflet_maps_app.maps-plus.renderer">svg</option>
+                <option name="leaflet_maps_app.maps-plus.scrollWheelZoom">1</option>
+                <option name="leaflet_maps_app.maps-plus.showPathLines">0</option>
+                <option name="leaflet_maps_app.maps-plus.showPlayback">1</option>
+                <option name="leaflet_maps_app.maps-plus.showPlaybackDateControl">0</option>
+                <option name="leaflet_maps_app.maps-plus.showPlaybackPlayControl">1</option>
+                <option name="leaflet_maps_app.maps-plus.showPlaybackSliderControl">0</option>
+                <option name="leaflet_maps_app.maps-plus.showProgress">1</option>
+                <option name="leaflet_maps_app.maps-plus.singleMarkerMode">0</option>
+                <option name="leaflet_maps_app.maps-plus.spiderfyDistanceMultiplier">1</option>
+                <option name="leaflet_maps_app.maps-plus.stickyTooltip">1</option>
+                <option name="leaflet_maps_app.maps-plus.warningThreshold">55</option>
+                <option name="refresh.display">progressbar</option>
+                <drilldown>
+                    <set token="form.school_id">$row.school_id$</set>
+                </drilldown>
+            </viz>
+        </panel>
+    </row>
+</form>

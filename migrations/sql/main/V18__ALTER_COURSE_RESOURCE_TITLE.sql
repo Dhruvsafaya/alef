@@ -1,0 +1,1 @@
+alter table dim_course_additional_resource_activity_association alter column caraa_resource_activity_title type varchar(100);

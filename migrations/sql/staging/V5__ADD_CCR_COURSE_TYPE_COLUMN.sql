@@ -1,0 +1,1 @@
+ALTER TABLE rel_course_content_repository_association ADD COLUMN ccr_course_type VARCHAR(50);

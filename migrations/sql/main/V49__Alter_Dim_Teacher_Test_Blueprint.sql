@@ -1,0 +1,2 @@
+ALTER TABLE dim_teacher_test_blueprint RENAME COLUMN ttb_test_blueprint_dw_id TO ttb_dw_id;
+ALTER TABLE dim_teacher_test_blueprint_lesson_association ADD COLUMN ttbla_active_until timestamp;

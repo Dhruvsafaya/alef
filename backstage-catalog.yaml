@@ -1,0 +1,31 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: alef-data-platform
+  description: This repository contains code to pull data sources from kafka and do transformation by both streaming and batch operations.
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/AlefEducation/alef-data-platform?tab=readme-ov-file#alef-data-platform
+    github.com/project-slug: AlefEducation/alef-data-platform
+    sonarqube.org/project-key: AlefEducation_alef-data-platform
+    alefed.com/github-repo-name: alef-data-platform
+    alefed.com/criticality: medium
+  tags:
+    - scala
+  links:
+    - url: https://github.com/AlefEducation/alef-data-platform
+      title: GitHub Repo
+      icon: github
+    - url: https://ci.alefed.com/job/alef-data-platform/
+      title: CI/CD
+      icon: jenkins
+    - url: https://github.com/AlefEducation/alef-data-platform/actions
+      title: CI/CD - PR
+      icon: github
+    - url: https://alefeducation.atlassian.net/wiki/spaces/ALEF/pages/1940783124/Alef+Data+Platform+Architecture+Data+Lake+EDW
+      title: Service Doc
+      icon: docs
+spec:
+  type: library
+  lifecycle: production
+  owner: falcons
+  system: alef

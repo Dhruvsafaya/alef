@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS dim_pathway_content_repository;

@@ -1,0 +1,112 @@
+pipeline {
+    agent {
+        label 'wrkr3'
+    }
+
+    environment {
+        NEXUS_TOKEN = credentials('falcon-nexus-creds')
+    }
+
+    stages {
+        stage('init') {
+            steps {
+                script {
+                     def sbtLaunch = tool name: '1.1.1', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'
+                     env.sbt= "/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.*.x86_64/jre/bin/java -Xms512M -Xmx2048M -Xss2M -XX:MaxMetaspaceSize=512M -Dsbt.log.noformat=true -jar ${sbtLaunch}"
+                 }
+                 checkout scm
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                echo '********************** COMPILING PROJECT **********************'
+                sh '${sbt} clean update compile'
+            }
+        }
+
+        // 'Test core' is now out of the parallel stages as Jacoco fails if executed in parallel with the other submodules which depends on it
+        stage('Test core') {
+            when {
+                expression {
+                    def exitStatus = sh(script: './.build/skip_if_unchanged.sh ./core ./build.sbt ./.build', returnStatus: true)
+                    return exitStatus == 0
+                }
+                beforeAgent true
+            }
+            steps {
+                echo '********************** RUNNING TEST FOR MODULE : core **********************'
+                sh '${sbt} "project core" update jacoco'
+            }
+        }
+
+        stage('Test') {
+            parallel {
+                stage('Test batch-events') {
+                    when {
+                        expression {
+                            def exitStatus = sh(script: './.build/skip_if_unchanged.sh ./batch-events ./core ./build.sbt ./.build', returnStatus: true)
+                            return exitStatus == 0
+                        }
+                        beforeAgent true
+                    }
+                    steps {
+                        echo '********************** RUNNING TEST FOR MODULE : batch-events **********************'
+                        sh '${sbt} "project batch-events" update jacoco'
+                    }
+                }
+                stage('Test streaming-events') {
+                    when {
+                        expression {
+                            def exitStatus = sh(script: './.build/skip_if_unchanged.sh ./streaming-events ./core ./build.sbt ./.build', returnStatus: true)
+                            return exitStatus == 0
+                        }
+                        beforeAgent true
+                    }
+                    steps {
+                        echo '********************** RUNNING TEST FOR MODULE : streaming-events **********************'
+                        sh '${sbt} "project streaming-events" update jacoco'
+                    }
+                }
+                stage('Test ccl-streaming-events') {
+                    when {
+                        expression {
+                            def exitStatus = sh(script: './.build/skip_if_unchanged.sh ./ccl-streaming-events ./core ./build.sbt ./.build', returnStatus: true)
+                            return exitStatus == 0
+                        }
+                        beforeAgent true
+                    }
+                    steps {
+                        echo '********************** RUNNING TEST FOR MODULE : ccl-streaming-events **********************'
+                        sh '${sbt} "project ccl-streaming-events" update jacoco'
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                scannerHome = tool 'sonarqube-wrk3';
+                env.JAVA_HOME = "/usr/local/jdk-17"
+                env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+
+                BRANCH_NAME = "${GIT_BRANCH}"
+                CHANGE_ID = "${GIT_BRANCH.split("/")[2]}"
+                CHANGE_TARGET = "origin/develop"
+                JACOCO_MODULE_REPORT = "target/scala-2.12/jacoco/report/jacoco.xml"
+            }
+
+            withSonarQubeEnv(installationName: 'SonarCloud') {
+                echo "PATH=$PATH | JAVA_HOME=$JAVA_HOME"
+                echo "Env Vars :: BRANCH_NAME=$BRANCH_NAME, CHANGE_ID=$CHANGE_ID, CHANGE_TARGET=$CHANGE_TARGET, JACOCO_MODULE_REPORT=$JACOCO_MODULE_REPORT"
+
+                sh "${scannerHome}/bin/sonar-scanner -Dsonar.pullrequest.key=$CHANGE_ID \
+                                  -Dsonar.pullrequest.branch=$BRANCH_NAME \
+                                  -Dsonar.pullrequest.base=$CHANGE_TARGET \
+                                  -Dsonar.coverage.jacoco.xmlReportPaths=core/$JACOCO_MODULE_REPORT,batch-events/$JACOCO_MODULE_REPORT,ccl-streaming-events/$JACOCO_MODULE_REPORT,streaming-events/$JACOCO_MODULE_REPORT"
+            }
+        }
+    }
+}

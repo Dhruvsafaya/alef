@@ -1,0 +1,1 @@
+update alefdw.dim_teacher set teacher_status=3 where rel_teacher_dw_id=434644;

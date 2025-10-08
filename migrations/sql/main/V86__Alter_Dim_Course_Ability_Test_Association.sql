@@ -1,0 +1,2 @@
+ALTER TABLE dim_course_ability_test_association DROP COLUMN cata_is_placement_type;
+ALTER TABLE dim_course_ability_test_association ADD COLUMN cata_is_placement_test BOOLEAN;

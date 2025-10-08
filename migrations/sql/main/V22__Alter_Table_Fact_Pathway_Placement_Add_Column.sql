@@ -1,0 +1,1 @@
+ALTER TABLE fact_pathway_placement ADD COLUMN fpp_has_accelerated_domains BOOLEAN;

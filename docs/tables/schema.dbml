@@ -1,0 +1,4078 @@
+Table dim_academic_calendar {
+academic_calendar_dw_id bigint
+academic_calendar_created_time TIMESTAMP
+academic_calendar_updated_time TIMESTAMP
+academic_calendar_deleted_time TIMESTAMP
+academic_calendar_dw_created_time TIMESTAMP
+academic_calendar_dw_updated_time TIMESTAMP
+academic_calendar_status integer
+academic_calendar_title VARCHAR(50)
+academic_calendar_id VARCHAR(36)
+academic_calendar_tenant_id VARCHAR(36)
+academic_calendar_school_id VARCHAR(36)
+academic_calendar_school_dw_id bigint
+academic_calendar_is_default boolean
+academic_calendar_type VARCHAR(30)
+academic_calendar_academic_year_id VARCHAR(36)
+academic_calendar_academic_year_dw_id VARCHAR(36)
+academic_calendar_created_by_id VARCHAR(36)
+academic_calendar_updated_by_id VARCHAR(36)
+academic_calendar_organization VARCHAR(50)
+academic_calendar_organization_dw_id bigint
+academic_calendar_created_by_dw_id bigint
+academic_calendar_updated_by_dw_id bigint
+}
+
+Table dim_academic_calendar_teaching_period {
+actp_teaching_period_title VARCHAR(50)
+actp_academic_calendar_id VARCHAR(36)
+actp_dw_updated_time TIMESTAMP
+actp_teaching_period_is_current boolean
+actp_teaching_period_id VARCHAR(36)
+actp_teaching_period_start_date date
+actp_teaching_period_end_date date
+actp_dw_created_time TIMESTAMP
+actp_updated_time TIMESTAMP
+actp_created_time TIMESTAMP
+actp_dw_id bigint
+actp_teaching_period_created_by_id VARCHAR(36)
+actp_teaching_period_updated_by_id VARCHAR(36)
+actp_status integer
+actp_teaching_period_order integer
+}
+
+Table dim_academic_year {
+academic_year_dw_id bigint
+academic_year_created_time TIMESTAMP
+academic_year_updated_time TIMESTAMP
+academic_year_deleted_time TIMESTAMP
+academic_year_dw_created_time TIMESTAMP
+academic_year_dw_updated_time TIMESTAMP
+academic_year_status smallint
+academic_year_id VARCHAR(36)
+academic_year_school_id VARCHAR(36)
+academic_year_start_date date
+academic_year_end_date date
+academic_year_is_roll_over_completed boolean
+academic_year_delta_dw_id bigint
+academic_year_organization_code VARCHAR(50)
+academic_year_organization_dw_id bigint
+academic_year_school_dw_id bigint
+academic_year_created_by_dw_id bigint
+academic_year_updated_by_dw_id bigint
+academic_year_state VARCHAR(50)
+academic_year_created_by VARCHAR(36)
+academic_year_updated_by VARCHAR(36)
+academic_year_type VARCHAR(36)
+}
+
+Table dim_activity_template {
+at_dw_id bigint
+at_uuid VARCHAR(36)
+at_name VARCHAR(256)
+at_description VARCHAR(4096)
+at_status integer
+at_activity_type VARCHAR(50)
+at_created_time TIMESTAMP
+at_updated_time TIMESTAMP
+at_dw_created_time TIMESTAMP
+at_dw_updated_time TIMESTAMP
+at_publisher_id bigint
+at_publisher_name VARCHAR(255)
+at_published_date TIMESTAMP
+at_component_uuid VARCHAR(36)
+at_order integer
+at_component_name VARCHAR(256)
+at_component_type integer
+at_abbreviation VARCHAR(50)
+at_icon VARCHAR(256)
+at_max_repeat integer
+at_exit_ticket boolean
+at_completion_node boolean
+at_always_enabled boolean
+at_passing_score integer
+at_assessments_attempts integer
+at_question_attempts_hints boolean
+at_question_attempts integer
+at_release_condition VARCHAR(36)
+at_section_type integer
+at_release_component VARCHAR(36)
+at_min integer
+at_max integer
+}
+
+Table dim_admin {
+rel_admin_dw_id bigint
+admin_created_time TIMESTAMP
+admin_updated_time TIMESTAMP
+admin_deleted_time TIMESTAMP
+admin_dw_created_time TIMESTAMP
+admin_dw_updated_time TIMESTAMP
+admin_active_until TIMESTAMP
+admin_status integer
+admin_id VARCHAR(36)
+admin_dw_id bigint
+admin_avatar VARCHAR(100)
+admin_onboarded boolean
+admin_school_dw_id bigint
+admin_role_dw_id bigint
+admin_expirable boolean
+admin_exclude_from_report boolean
+}
+
+Table dim_adt_attempt_threshold {
+aat_dw_id bigint
+aat_created_time TIMESTAMP
+aat_updated_time TIMESTAMP
+aat_dw_created_time TIMESTAMP
+aat_dw_updated_time TIMESTAMP
+aat_status integer
+aat_id VARCHAR(36)
+aat_tenant_dw_id bigint
+aat_tenant_id VARCHAR(36)
+aat_academic_year_dw_id bigint
+aat_academic_year_id VARCHAR(36)
+aat_school_dw_id bigint
+aat_school_id VARCHAR(36)
+aat_state VARCHAR(50)
+aat_attempt_title VARCHAR(100)
+aat_attempt_start_time TIMESTAMP
+aat_attempt_end_time TIMESTAMP
+aat_attempt_number integer
+aat_total_attempts integer
+}
+
+Table dim_announcement {
+rel_announcement_dw_id bigint
+announcement_created_time TIMESTAMP
+announcement_deleted_time TIMESTAMP
+announcement_updated_time TIMESTAMP
+announcement_dw_created_time TIMESTAMP
+announcement_dw_updated_time TIMESTAMP
+announcement_status integer
+announcement_tenant_dw_id integer
+announcement_id VARCHAR(36)
+announcement_dw_id integer
+announcement_admin_dw_id integer
+announcement_role_dw_id integer
+announcement_recipient_type integer
+announcement_recipient_dw_id integer
+announcement_has_attachment boolean
+}
+
+Table dim_assignment {
+assignment_dw_id bigint
+assignment_created_time TIMESTAMP
+assignment_updated_time TIMESTAMP
+assignment_deleted_time TIMESTAMP
+assignment_dw_created_time TIMESTAMP
+assignment_dw_updated_time TIMESTAMP
+assignment_id VARCHAR(36)
+assignment_title VARCHAR(300)
+assignment_attachment_file_id VARCHAR(100)
+assignment_attachment_file_name VARCHAR(500)
+assignment_attachment_path VARCHAR(500)
+assignment_allow_submission boolean
+assignment_language VARCHAR(256)
+assignment_status integer
+assignment_is_gradeable boolean
+assignment_assignment_status VARCHAR(50)
+assignment_created_by VARCHAR(36)
+assignment_updated_by VARCHAR(36)
+assignment_published_on TIMESTAMP
+assignment_attachment_required boolean
+assignment_comment_required boolean
+assignment_type VARCHAR(36)
+assignment_metadata_author VARCHAR(36)
+assignment_metadata_is_sa boolean
+assignment_metadata_authored_date VARCHAR(36)
+assignment_metadata_language VARCHAR(50)
+assignment_metadata_format_type VARCHAR(50)
+assignment_metadata_lexile_level VARCHAR(50)
+assignment_metadata_difficulty_level VARCHAR(50)
+assignment_metadata_resource_type VARCHAR(50)
+assignment_metadata_knowledge_dimensions VARCHAR(50)
+assignment_school_dw_id bigint
+assignment_tenant_dw_id bigint
+assignment_max_score numeric(304)
+}
+
+Table dim_assignment_instance {
+assignment_instance_dw_id bigint
+assignment_instance_created_time TIMESTAMP
+assignment_instance_dw_created_time TIMESTAMP
+assignment_instance_updated_time TIMESTAMP
+assignment_instance_dw_updated_time TIMESTAMP
+assignment_instance_deleted_time TIMESTAMP
+assignment_instance_id VARCHAR(36)
+assignment_instance_status integer
+assignment_instance_assignment_dw_id bigint
+assignment_instance_start_on TIMESTAMP
+assignment_instance_due_on TIMESTAMP
+assignment_instance_allow_late_submission boolean
+assignment_instance_type VARCHAR(10)
+assignment_instance_tenant_dw_id bigint
+assignment_instance_grade_dw_id bigint
+assignment_instance_class_dw_id bigint
+assignment_instance_section_dw_id bigint
+assignment_instance_teacher_dw_id bigint
+assignment_instance_subject_dw_id bigint
+assignment_instance_lo_dw_id bigint
+assignment_instance_learning_path_dw_id bigint
+assignment_instance_instructional_plan_id VARCHAR(36)
+assignment_instance_trimester_id VARCHAR(36)
+assignment_instance_active_until TIMESTAMP
+assignment_instance_teaching_period_id VARCHAR(36)
+}
+
+Table dim_assignment_instance_student {
+ais_dw_id bigint
+ais_created_time TIMESTAMP
+ais_dw_created_time TIMESTAMP
+ais_updated_time TIMESTAMP
+ais_dw_updated_time TIMESTAMP
+ais_deleted_time TIMESTAMP
+ais_status integer
+ais_instance_dw_id bigint
+ais_student_dw_id bigint
+}
+
+Table dim_avatar {
+avatar_dw_id bigint
+avatar_id VARCHAR(36)
+avatar_file_id VARCHAR(36)
+avatar_created_time TIMESTAMP
+avatar_deleted_time TIMESTAMP
+avatar_dw_created_time TIMESTAMP
+avatar_updated_time TIMESTAMP
+avatar_dw_updated_time TIMESTAMP
+avatar_app_status VARCHAR(20)
+avatar_status integer
+avatar_type VARCHAR(36)
+avatar_name VARCHAR(256)
+avatar_description VARCHAR(36)
+avatar_valid_from TIMESTAMP
+avatar_valid_till TIMESTAMP
+avatar_category VARCHAR(20)
+avatar_star_cost integer
+avatar_is_enabled_for_all_orgs boolean
+}
+
+Table dim_avatar_customization {
+ac_dw_id bigint
+ac_created_time TIMESTAMP
+ac_updated_time TIMESTAMP
+ac_deleted_time TIMESTAMP
+ac_dw_created_time TIMESTAMP
+ac_dw_updated_time TIMESTAMP
+ac_status integer
+ac_student_id VARCHAR(36)
+ac_student_dw_id integer
+ac_avatar_id VARCHAR(36)
+ac_avatar_dw_id integer
+ac_type VARCHAR(30)
+ac_item_id VARCHAR(36)
+ac_item_type VARCHAR(30)
+ac_item_value VARCHAR(60)
+}
+
+Table dim_avatar_layer {
+avatar_layer_dw_id bigint
+avatar_layer_created_time TIMESTAMP
+avatar_layer_dw_created_time TIMESTAMP
+avatar_layer_updated_time TIMESTAMP
+avatar_layer_dw_updated_time TIMESTAMP
+avatar_layer_deleted_time TIMESTAMP
+avatar_layer_id VARCHAR(36)
+avatar_layer_status integer
+avatar_layer_config_type VARCHAR(20)
+avatar_layer_type VARCHAR(20)
+avatar_layer_key VARCHAR(50)
+avatar_layer_value VARCHAR(50)
+avatar_layer_genders VARCHAR(36)
+avatar_layer_cost integer
+avatar_layer_is_enabled boolean
+avatar_layer_is_deleted boolean
+avatar_layer_valid_from TIMESTAMP
+avatar_layer_valid_till TIMESTAMP
+avatar_layer_order integer
+}
+
+Table dim_avatar_layer_customization {
+ala_dw_id bigint
+ala_created_time TIMESTAMP
+ala_dw_created_time TIMESTAMP
+ala_deleted_time TIMESTAMP
+ala_updated_time TIMESTAMP
+ala_dw_updated_time TIMESTAMP
+ala_status integer
+ala_avatar_id VARCHAR(36)
+ala_layer_id VARCHAR(36)
+}
+
+Table dim_award_category {
+award_category_dw_id bigint
+award_category_id VARCHAR(20)
+award_category_level_ar VARCHAR(100)
+award_category_level_en VARCHAR(100)
+}
+
+Table dim_badge {
+bdg_dw_id bigint pk
+bdg_id VARCHAR(36)
+bdg_tier VARCHAR(36)
+bdg_grade VARCHAR(36)
+bdg_type VARCHAR(36)
+bdg_tenant_dw_id bigint
+bdg_title VARCHAR(36)
+bdg_category VARCHAR(36)
+bdg_threshold integer
+bdg_status integer
+bdg_created_time TIMESTAMP
+bdg_dw_created_time TIMESTAMP
+bdg_active_until TIMESTAMP
+}
+
+Table dim_category {
+category_dw_id bigint
+category_created_time TIMESTAMP
+category_updated_time TIMESTAMP
+category_deleted_time TIMESTAMP
+category_dw_created_time TIMESTAMP
+category_dw_updated_time TIMESTAMP
+category_status integer
+category_id VARCHAR(36)
+category_name VARCHAR(500)
+category_code VARCHAR(150)
+category_description VARCHAR(500)
+}
+
+Table dim_ccl_skill {
+ccl_skill_dw_id bigint
+ccl_skill_created_time TIMESTAMP
+ccl_skill_updated_time TIMESTAMP
+ccl_skill_deleted_time TIMESTAMP
+ccl_skill_dw_created_time TIMESTAMP
+ccl_skill_dw_updated_time TIMESTAMP
+ccl_skill_status integer
+ccl_skill_id VARCHAR(36)
+ccl_skill_name VARCHAR(750)
+ccl_skill_code VARCHAR(150)
+ccl_skill_description VARCHAR(750)
+ccl_skill_subject_id bigint
+}
+
+Table dim_class {
+class_dw_id bigint
+class_created_time TIMESTAMP
+class_updated_time TIMESTAMP
+class_deleted_time TIMESTAMP
+class_dw_created_time TIMESTAMP
+class_dw_updated_time TIMESTAMP
+class_status integer
+class_id VARCHAR(36)
+class_title VARCHAR(255)
+class_school_id VARCHAR(36)
+class_grade_id VARCHAR(36)
+class_section_id VARCHAR(36)
+class_academic_year_id VARCHAR(36)
+class_gen_subject VARCHAR(255)
+class_curriculum_id bigint
+class_curriculum_grade_id bigint
+class_curriculum_subject_id bigint
+class_content_academic_year integer
+class_tutor_dhabi_enabled boolean
+class_language_direction VARCHAR(25)
+class_online boolean
+class_practice boolean
+class_course_status VARCHAR(50)
+class_source_id VARCHAR(255)
+class_curriculum_instructional_plan_id VARCHAR(36)
+class_category_id VARCHAR(36)
+class_active_until TIMESTAMP
+class_material_id VARCHAR(36)
+class_material_type VARCHAR(20)
+rel_class_dw_id bigint
+class_academic_calendar_id VARCHAR(36)
+}
+
+Table dim_class_category {
+class_category_dw_id bigint
+class_category_id VARCHAR(36)
+class_category_name VARCHAR(50)
+class_category_created_time TIMESTAMP
+class_category_dw_created_time TIMESTAMP
+class_category_updated_time TIMESTAMP
+class_category_dw_updated_time TIMESTAMP
+class_category_status integer
+class_category_organization_code VARCHAR(20)
+}
+
+Table dim_class_schedule {
+class_schedule_dw_id bigint
+class_schedule_created_time TIMESTAMP
+class_schedule_updated_time TIMESTAMP
+class_schedule_dw_created_time TIMESTAMP
+class_schedule_dw_updated_time TIMESTAMP
+class_schedule_status integer
+class_schedule_class_id VARCHAR(36)
+class_schedule_day VARCHAR(10)
+class_schedule_start_time VARCHAR(10)
+class_schedule_end_time VARCHAR(10)
+class_schedule_attach_status integer
+}
+
+Table dim_class_user {
+class_user_created_time TIMESTAMP
+class_user_updated_time TIMESTAMP
+class_user_deleted_time TIMESTAMP
+class_user_dw_created_time TIMESTAMP
+class_user_dw_updated_time TIMESTAMP
+class_user_active_until TIMESTAMP
+class_user_status integer
+class_user_class_dw_id bigint
+class_user_user_dw_id bigint
+class_user_role_dw_id bigint
+class_user_attach_status integer
+rel_class_user_dw_id bigint
+}
+
+Table dim_content {
+content_dw_id bigint
+content_created_time TIMESTAMP
+content_updated_time TIMESTAMP
+content_deleted_time TIMESTAMP
+content_dw_created_time TIMESTAMP
+content_dw_updated_time TIMESTAMP
+content_status integer
+content_title VARCHAR(750)
+content_tags VARCHAR(255)
+content_file_name VARCHAR(750)
+content_file_content_type VARCHAR(50)
+content_file_size bigint
+content_file_updated_at TIMESTAMP
+content_condition_of_use VARCHAR(750)
+content_knowledge_dimension VARCHAR(50)
+content_difficulty_level VARCHAR(50)
+content_language VARCHAR(50)
+content_lexical_level VARCHAR(36)
+content_media_type VARCHAR(50)
+content_action_status integer
+content_location VARCHAR(100)
+content_authored_date date
+content_created_at TIMESTAMP
+content_created_by bigint
+content_published_date date
+content_publisher_id bigint
+content_id bigint
+content_organisation VARCHAR(50)
+content_learning_resource_types VARCHAR(200)
+content_cognitive_dimensions VARCHAR(200)
+}
+
+Table dim_content_academic_year {
+content_academic_year_id integer
+content_academic_year_name VARCHAR(20)
+}
+
+Table dim_content_association {
+content_association_dw_id bigint
+content_association_content_id bigint
+content_association_created_time TIMESTAMP
+content_association_updated_time TIMESTAMP
+content_association_dw_created_time TIMESTAMP
+content_association_dw_updated_time TIMESTAMP
+content_association_status integer
+content_association_id VARCHAR(36)
+content_association_type integer
+content_association_attach_status integer
+}
+
+Table dim_content_repository {
+rel_content_repository_dw_id bigint
+content_repository_created_time TIMESTAMP
+content_repository_dw_created_time TIMESTAMP
+content_repository_updated_time TIMESTAMP
+content_repository_dw_updated_time TIMESTAMP
+content_repository_dw_id bigint
+content_repository_id VARCHAR(36)
+content_repository_status integer
+content_repository_name VARCHAR(50)
+content_repository_organisation_owner VARCHAR(50)
+content_repository_updated_by_id VARCHAR(36)
+content_repository_created_by_id VARCHAR(36)
+content_repository_deleted_time TIMESTAMP
+}
+
+Table dim_content_repository_new {
+content_repository_dw_id bigint
+content_repository_id VARCHAR(36)
+content_repository_name VARCHAR(50)
+content_repository_organisation_owner VARCHAR(30)
+content_repository_created_by_id VARCHAR(36)
+content_repository_updated_by_id VARCHAR(36)
+content_repository_status integer
+content_repository_created_time TIMESTAMP
+content_repository_dw_created_time TIMESTAMP
+content_repository_updated_time TIMESTAMP
+content_repository_dw_updated_time TIMESTAMP
+}
+
+Table dim_content_student_association {
+content_student_association_dw_id bigint
+content_student_association_created_time TIMESTAMP
+content_student_association_updated_time TIMESTAMP
+content_student_association_dw_created_time TIMESTAMP
+content_student_association_dw_updated_time TIMESTAMP
+content_student_association_status integer
+content_student_association_content_id VARCHAR(36)
+content_student_association_student_id VARCHAR(36)
+content_student_association_assign_status integer
+content_student_association_assigned_by VARCHAR(36)
+content_student_association_type smallint
+content_student_association_lo_id VARCHAR(36)
+content_student_association_class_id VARCHAR(36)
+content_student_association_step_id VARCHAR(36)
+content_student_association_content_type VARCHAR(50)
+}
+
+Table dim_core_activity_assign {
+cta_dw_id bigint
+cta_event_type VARCHAR(100)
+cta_id VARCHAR(36)
+cta_created_time TIMESTAMP
+cta_dw_created_time TIMESTAMP
+cta_status smallint
+cta_active_until TIMESTAMP
+cta_action_time TIMESTAMP
+cta_start_date VARCHAR(10)
+cta_end_date VARCHAR(10)
+cta_ay_tag VARCHAR(10)
+cta_tenant_dw_id bigint
+cta_tenant_id VARCHAR(36)
+cta_student_dw_id bigint
+cta_student_id VARCHAR(36)
+cta_course_dw_id bigint
+cta_course_id VARCHAR(36)
+cta_class_dw_id bigint
+cta_class_id VARCHAR(36)
+cta_teacher_dw_id bigint
+cta_teacher_id VARCHAR(36)
+cta_activity_dw_id bigint
+cta_activity_id VARCHAR(36)
+cta_activity_type VARCHAR(20)
+cta_progress_status VARCHAR(30)
+}
+
+Table dim_course {
+rel_course_dw_id bigint
+course_dw_id bigint
+course_id VARCHAR(36)
+course_type VARCHAR(25)
+course_status integer
+course_name VARCHAR(255)
+course_code VARCHAR(50)
+course_organization_dw_id bigint
+course_created_time TIMESTAMP
+course_deleted_time TIMESTAMP
+course_updated_time TIMESTAMP
+course_dw_created_time TIMESTAMP
+course_dw_updated_time TIMESTAMP
+course_dw_deleted_time TIMESTAMP
+course_lang_code VARCHAR(10)
+course_program_enabled boolean
+course_resources_enabled boolean
+course_placement_type VARCHAR(50)
+}
+
+Table dim_course_ability_test_association {
+cata_dw_id bigint
+cata_created_time TIMESTAMP
+cata_updated_time TIMESTAMP
+cata_dw_created_time TIMESTAMP
+cata_dw_updated_time TIMESTAMP
+cata_course_id VARCHAR(36)
+cata_ability_test_activity_uuid VARCHAR(36)
+cata_ability_test_activity_id integer
+cata_ability_test_id VARCHAR(36)
+cata_max_attempts integer
+cata_ability_test_pacing VARCHAR(16)
+cata_ability_test_index integer
+cata_course_version VARCHAR(10)
+cata_ability_test_type integer
+cata_status integer
+cata_attach_status integer
+cata_ability_test_activity_type VARCHAR(50)
+cata_is_placement_test boolean
+}
+
+Table dim_course_activity_association {
+caa_dw_id bigint
+caa_created_time TIMESTAMP
+caa_updated_time TIMESTAMP
+caa_deleted_time TIMESTAMP
+caa_dw_created_time TIMESTAMP
+caa_dw_updated_time TIMESTAMP
+caa_dw_deleted_time TIMESTAMP
+caa_status integer
+caa_attach_status integer
+caa_course_id VARCHAR(36)
+caa_course_dw_id bigint
+caa_container_id VARCHAR(36)
+caa_container_dw_id bigint
+caa_activity_id VARCHAR(36)
+caa_activity_dw_id bigint
+caa_activity_type integer
+caa_activity_pacing VARCHAR(50)
+caa_activity_index integer
+caa_course_version VARCHAR(10)
+caa_is_parent_deleted boolean
+caa_grade VARCHAR(10)
+caa_activity_is_optional boolean
+caa_is_joint_parent_activity boolean
+}
+
+Table dim_course_activity_container {
+course_activity_container_is_accelerated boolean
+course_activity_container_pacing VARCHAR(50)
+course_activity_container_sequence integer
+course_activity_container_course_version VARCHAR(10)
+course_activity_container_attach_status integer
+course_activity_container_id VARCHAR(36)
+course_activity_container_dw_id bigint
+course_activity_container_longname VARCHAR(255)
+course_activity_container_updated_time TIMESTAMP
+course_activity_container_dw_created_time TIMESTAMP
+course_activity_container_title VARCHAR(50)
+course_activity_container_created_time TIMESTAMP
+course_activity_container_course_id VARCHAR(36)
+course_activity_container_domain VARCHAR(50)
+course_activity_container_status integer
+course_activity_container_dw_updated_time TIMESTAMP
+course_activity_container_index integer
+rel_course_activity_container_dw_id bigint
+}
+
+Table dim_course_activity_container_domain {
+cacd_dw_id bigint
+cacd_container_id VARCHAR(36)
+cacd_container_dw_id bigint
+cacd_course_id VARCHAR(36)
+cacd_course_dw_id bigint
+cacd_domain VARCHAR(50)
+cacd_sequence integer
+cacd_created_time TIMESTAMP
+cacd_dw_created_time TIMESTAMP
+cacd_updated_time TIMESTAMP
+cacd_dw_updated_time TIMESTAMP
+cacd_status integer
+}
+
+Table dim_course_activity_container_grade_association {
+cacga_dw_id bigint
+cacga_container_id VARCHAR(36)
+cacga_container_dw_id bigint
+cacga_course_id VARCHAR(36)
+cacga_course_dw_id bigint
+cacga_grade VARCHAR(10)
+cacga_created_time TIMESTAMP
+cacga_dw_created_time TIMESTAMP
+cacga_updated_time TIMESTAMP
+cacga_dw_updated_time TIMESTAMP
+cacga_status integer
+}
+
+Table dim_course_activity_grade_association {
+caga_dw_id bigint
+caga_created_time TIMESTAMP
+caga_updated_time TIMESTAMP
+caga_deleted_time TIMESTAMP
+caga_dw_created_time TIMESTAMP
+caga_dw_updated_time TIMESTAMP
+caga_dw_deleted_time TIMESTAMP
+caga_status integer
+caga_course_dw_id bigint
+caga_course_id VARCHAR(36)
+caga_activity_dw_id bigint
+caga_activity_id VARCHAR(36)
+caga_grade_id VARCHAR(36)
+}
+
+Table dim_course_activity_outcome_association {
+caoa_dw_id bigint
+caoa_created_time TIMESTAMP
+caoa_updated_time TIMESTAMP
+caoa_dw_created_time TIMESTAMP
+caoa_dw_updated_time TIMESTAMP
+caoa_status integer
+caoa_course_dw_id bigint
+caoa_course_id VARCHAR(36)
+caoa_activity_dw_id bigint
+caoa_activity_id VARCHAR(36)
+caoa_outcome_id VARCHAR(36)
+caoa_outcome_type VARCHAR(50)
+caoa_curr_id bigint
+caoa_curr_grade_id bigint
+caoa_curr_subject_id bigint
+}
+
+Table dim_course_additional_resource_activity_association {
+caraa_dw_id bigint
+caraa_course_id VARCHAR(36)
+caraa_resource_activity_id VARCHAR(36)
+caraa_resource_activity_legacy_id VARCHAR(36)
+caraa_resource_activity_type VARCHAR(20)
+caraa_resource_activity_title VARCHAR(100)
+caraa_resource_activity_file_name VARCHAR(100)
+caraa_resource_activity_file_id VARCHAR(50)
+caraa_created_time TIMESTAMP
+caraa_updated_time TIMESTAMP
+caraa_dw_created_time TIMESTAMP
+caraa_dw_updated_time TIMESTAMP
+caraa_status integer
+caraa_attach_status integer
+}
+
+Table dim_course_content_repository_association {
+ccr_dw_id bigint
+ccr_course_dw_id bigint
+ccr_course_id VARCHAR(36)
+ccr_repository_dw_id bigint
+ccr_repository_id VARCHAR(36)
+ccr_status integer
+ccr_created_time TIMESTAMP
+ccr_updated_time TIMESTAMP
+ccr_deleted_time TIMESTAMP
+ccr_dw_created_time TIMESTAMP
+ccr_dw_updated_time TIMESTAMP
+ccr_course_type VARCHAR(50)
+ccr_attach_status integer
+}
+
+Table dim_course_curriculum_association {
+cc_dw_id bigint
+cc_course_dw_id bigint
+cc_course_id VARCHAR(36)
+cc_curr_id bigint
+cc_curr_grade_id bigint
+cc_curr_subject_id bigint
+cc_status integer
+cc_created_time TIMESTAMP
+cc_updated_time TIMESTAMP
+cc_deleted_time TIMESTAMP
+cc_dw_created_time TIMESTAMP
+cc_dw_updated_time TIMESTAMP
+}
+
+Table dim_course_grade_association {
+cg_dw_id bigint
+cg_course_dw_id bigint
+cg_course_id VARCHAR(36)
+cg_grade_id integer
+cg_status integer
+cg_grade_dw_id bigint
+cg_created_time TIMESTAMP
+cg_dw_created_time TIMESTAMP
+cg_updated_time TIMESTAMP
+cg_dw_updated_time TIMESTAMP
+}
+
+Table dim_course_resource_activity_grade_association {
+craga_dw_id bigint
+craga_created_time TIMESTAMP
+craga_updated_time TIMESTAMP
+craga_deleted_time TIMESTAMP
+craga_dw_created_time TIMESTAMP
+craga_dw_updated_time TIMESTAMP
+craga_dw_deleted_time TIMESTAMP
+craga_status integer
+craga_course_dw_id bigint
+craga_course_id VARCHAR(36)
+craga_activity_dw_id bigint
+craga_activity_id VARCHAR(36)
+craga_grade_id VARCHAR(5)
+}
+
+Table dim_course_resource_activity_outcome_association {
+craoa_dw_id bigint
+craoa_created_time TIMESTAMP
+craoa_updated_time TIMESTAMP
+craoa_dw_created_time TIMESTAMP
+craoa_dw_updated_time TIMESTAMP
+craoa_status integer
+craoa_course_dw_id bigint
+craoa_course_id VARCHAR(36)
+craoa_activity_dw_id bigint
+craoa_activity_id VARCHAR(36)
+craoa_outcome_id VARCHAR(36)
+craoa_outcome_type VARCHAR(50)
+craoa_curr_id bigint
+craoa_curr_grade_id bigint
+craoa_curr_subject_id bigint
+}
+
+Table dim_course_subject_association {
+cs_dw_id bigint
+cs_course_dw_id bigint
+cs_course_id VARCHAR(36)
+cs_subject_dw_id bigint
+cs_subject_id integer
+cs_status integer
+cs_created_time TIMESTAMP
+cs_dw_created_time TIMESTAMP
+cs_updated_time TIMESTAMP
+cs_dw_updated_time TIMESTAMP
+}
+
+Table dim_curriculum {
+curr_name VARCHAR(255)
+curr_created_time TIMESTAMP
+curr_updated_time TIMESTAMP
+curr_deleted_time TIMESTAMP
+curr_dw_created_time TIMESTAMP
+curr_dw_updated_time TIMESTAMP
+curr_status integer
+curr_id bigint
+curr_organisation VARCHAR(50)
+curr_dw_id bigint
+}
+
+Table dim_curriculum_grade {
+curr_grade_dw_id bigint
+curr_grade_name VARCHAR(255)
+curr_grade_created_time TIMESTAMP
+curr_grade_updated_time TIMESTAMP
+curr_grade_deleted_time TIMESTAMP
+curr_grade_dw_created_time TIMESTAMP
+curr_grade_dw_updated_time TIMESTAMP
+curr_grade_status integer
+curr_grade_id bigint
+}
+
+Table dim_curriculum_subject {
+curr_subject_dw_id bigint
+curr_subject_name VARCHAR(255)
+curr_subject_created_time TIMESTAMP
+curr_subject_updated_time TIMESTAMP
+curr_subject_deleted_time TIMESTAMP
+curr_subject_dw_created_time TIMESTAMP
+curr_subject_dw_updated_time TIMESTAMP
+curr_subject_status integer
+curr_subject_skillable boolean
+curr_subject_id bigint
+}
+
+Table dim_curriculum_version {
+curriculum_version_dw_id bigint
+curriculum_version_created_time TIMESTAMP
+curriculum_version_updated_time TIMESTAMP
+curriculum_version_deleted_time TIMESTAMP
+curriculum_version_dw_created_time TIMESTAMP
+curriculum_version_dw_updated_time TIMESTAMP
+curriculum_version_status smallint
+curriculum_version_id bigint
+curriculum_version_curriculum_id bigint
+curriculum_version_curriculum_grade_id bigint
+curriculum_version_curriculum_subject_id bigint
+curriculum_version_name VARCHAR(90)
+curriculum_version_active_from date
+curriculum_version_active_to date
+curriculum_version_active boolean
+}
+
+Table dim_cx_maturity {
+cx_maturity_dw_id bigint
+cx_maturity_id bigint
+cx_maturity_evaluation_id VARCHAR(15)
+cx_maturity_tdc_dw_id bigint
+cx_maturity_sch_dw_id bigint
+cx_maturity_acc_year_dw_id bigint
+cx_maturity_trimester integer
+cx_maturity_submit VARCHAR(5)
+cx_maturity_approved VARCHAR(5)
+cx_maturity_submit_date TIMESTAMP
+cx_maturity_principal_factor double
+cx_maturity_teacher_factor double
+cx_maturity_student_factor double
+cx_maturity_parent_factor double
+cx_maturity_total_avg double
+cx_maturity_status integer
+cx_maturity_created_time TIMESTAMP
+cx_maturity_dw_created_time TIMESTAMP
+cx_maturity_updated_time TIMESTAMP
+cx_maturity_dw_updated_time TIMESTAMP
+cx_maturity_deleted_time TIMESTAMP
+}
+
+Table dim_cx_observation {
+cx_observation_dw_id bigint
+cx_observation_observation_id bigint
+cx_observation_observed_dw_id bigint
+cx_observation_observer_dw_id bigint
+cx_observation_observation_timing VARCHAR(25)
+cx_observation_observed_grade integer
+cx_observation_observed_period integer
+cx_observation_observation_score integer
+cx_observation_joint_observer_dw_id bigint
+cx_observation_observation_submit_time TIMESTAMP
+cx_observation_observation_sent_time TIMESTAMP
+cx_observation_observation_type VARCHAR(25)
+cx_observation_coaching_closing_time TIMESTAMP
+cx_observation_coach_dw_id bigint
+cx_observation_observation_center_dw_id bigint
+cx_observation_observation_archived VARCHAR(60)
+cx_observation_status integer
+cx_observation_created_time TIMESTAMP
+cx_observation_dw_created_time TIMESTAMP
+cx_observation_updated_time TIMESTAMP
+cx_observation_dw_updated_time TIMESTAMP
+cx_observation_deleted_time TIMESTAMP
+}
+
+Table dim_cx_plc_info {
+cx_plc_info_dw_id bigint
+cx_plc_info_id bigint
+cx_plc_info_code VARCHAR(10)
+cx_plc_info_term integer
+cx_plc_info_acc_year VARCHAR(9)
+cx_plc_info_creation_date TIMESTAMP
+cx_plc_info_title VARCHAR(500)
+cx_plc_info_audience integer
+cx_plc_info_status integer
+cx_plc_info_cx_status integer
+cx_plc_info_created_time TIMESTAMP
+cx_plc_info_dw_created_time TIMESTAMP
+cx_plc_info_updated_time TIMESTAMP
+cx_plc_info_dw_updated_time TIMESTAMP
+cx_plc_info_deleted_time TIMESTAMP
+}
+
+Table dim_cx_role {
+role_dw_id bigint
+role_id integer
+role_title VARCHAR(20)
+role_status integer
+role_created_time TIMESTAMP
+role_dw_created_time TIMESTAMP
+role_updated_time TIMESTAMP
+role_dw_updated_time TIMESTAMP
+role_deleted_time TIMESTAMP
+}
+
+Table dim_cx_user {
+cx_user_dw_id bigint
+cx_user_cx_id bigint
+cx_user_id VARCHAR(36)
+cx_user_cx_status integer
+cx_user_status integer
+cx_user_subject VARCHAR(25)
+cx_user_role_dw_id bigint
+cx_user_created_time TIMESTAMP
+cx_user_dw_created_time TIMESTAMP
+cx_user_updated_time TIMESTAMP
+cx_user_dw_updated_time TIMESTAMP
+cx_user_deleted_time TIMESTAMP
+}
+
+Table dim_date {
+date_id integer pk
+full_date date
+weekday_name_short VARCHAR(5)
+weekday_name_long VARCHAR(20)
+day_of_week integer
+is_weekend boolean
+calendar_week_of date
+calendar_week_number integer
+calendar_month_name_short VARCHAR(20)
+calendar_month_name_long VARCHAR(20)
+calendar_month_number integer
+calendar_month_start_date date
+calendar_month_end_date date
+calendar_quarter_name VARCHAR(20)
+calendar_quarter_number integer
+calendar_quarter_start_date date
+calendar_quarter_end_date date
+calendar_year_week_name VARCHAR(20)
+calendar_year_week_number integer
+calendar_year_month_name VARCHAR(20)
+calendar_year_month_number integer
+calendar_year_quarter_name VARCHAR(20)
+calendar_year_quarter_number integer
+calendar_year_number integer
+calendar_year_name VARCHAR(20)
+calendar_year_start_date date
+calendar_year_end_date date
+broadcast_week_number integer
+broadcast_week_start_date date
+broadcast_week_end_date date
+broadcast_year_week_name VARCHAR(20)
+broadcast_year_week_number integer
+broadcast_month_start_date date
+broadcast_month_end_date date
+broadcast_month_number VARCHAR(20)
+broadcast_month_name_long VARCHAR(20)
+broadcast_month_name_short VARCHAR(20)
+broadcast_year_month_name VARCHAR(20)
+broadcast_year_month_number integer
+broadcast_quarter_start_date date
+broadcast_quarter_end_date date
+broadcast_quarter_number integer
+broadcast_quarter_name VARCHAR(20)
+broadcast_year_quarter_name VARCHAR(20)
+broadcast_year_quarter_number integer
+broadcast_year_start_date date
+broadcast_year_end_date date
+broadcast_year_number integer
+uae_week_number numeric(180)
+uae_year_week_number numeric(180)
+}
+
+Table dim_event_type {
+event_type_dw_id bigint
+event_type VARCHAR(100)
+event_type_tag VARCHAR(50)
+}
+
+Table dim_framework {
+framework_id integer
+framework_title VARCHAR(50)
+framework_description VARCHAR(200)
+framework_name VARCHAR(50)
+framework_code VARCHAR(36)
+framework_step_id integer
+}
+
+Table dim_grade {
+grade_dw_id bigint
+grade_created_time TIMESTAMP
+grade_updated_time TIMESTAMP
+grade_deleted_time TIMESTAMP
+grade_dw_created_time TIMESTAMP
+grade_dw_updated_time TIMESTAMP
+grade_status integer
+grade_id VARCHAR(36)
+grade_name VARCHAR(250)
+grade_k12grade integer
+academic_year_id VARCHAR(36)
+tenant_id VARCHAR(36)
+school_id VARCHAR(36)
+}
+
+Table dim_guardian {
+rel_guardian_dw_id bigint
+guardian_created_time TIMESTAMP
+guardian_updated_time TIMESTAMP
+guardian_deleted_time TIMESTAMP
+guardian_dw_created_time TIMESTAMP
+guardian_dw_updated_time TIMESTAMP
+guardian_active_until TIMESTAMP
+guardian_status integer
+guardian_id VARCHAR(36)
+guardian_dw_id bigint
+guardian_student_dw_id bigint
+guardian_invitation_status integer
+}
+
+Table dim_holiday {
+holiday_dw_id bigint
+holiday_date date
+holiday_name VARCHAR(100)
+holiday_country VARCHAR(50)
+holiday_organisation_dw_id integer
+content_repository_dw_id bigint
+}
+
+Table dim_ic_lesson_association {
+ic_lesson_dw_id bigint
+ic_lesson_created_time TIMESTAMP
+ic_lesson_dw_created_time TIMESTAMP
+ic_lesson_updated_time TIMESTAMP
+ic_lesson_dw_updated_time TIMESTAMP
+ic_lesson_status smallint
+ic_lesson_attach_status smallint
+ic_lesson_type smallint
+ic_lesson_ic_dw_id bigint
+ic_lesson_lo_dw_id bigint
+}
+
+Table dim_instructional_plan {
+instructional_plan_dw_id bigint
+instructional_plan_created_time TIMESTAMP
+instructional_plan_updated_time TIMESTAMP
+instructional_plan_deleted_time TIMESTAMP
+instructional_plan_dw_created_time TIMESTAMP
+instructional_plan_dw_updated_time TIMESTAMP
+instructional_plan_status integer
+instructional_plan_id VARCHAR(36)
+instructional_plan_name VARCHAR(100)
+instructional_plan_curriculum_id bigint
+instructional_plan_curriculum_subject_id bigint
+instructional_plan_curriculum_grade_id bigint
+instructional_plan_content_academic_year_id integer
+instructional_plan_item_order integer
+instructional_plan_item_week_dw_id bigint
+instructional_plan_item_lo_dw_id bigint
+instructional_plan_item_ccl_lo_id bigint
+instructional_plan_item_optional boolean
+instructional_plan_item_instructor_led boolean
+instructional_plan_item_default_locked boolean
+instructional_plan_item_type VARCHAR(36)
+instructional_plan_item_ic_dw_id bigint
+instructional_plan_content_repository_id VARCHAR(36)
+instructional_plan_content_repository_dw_id bigint
+}
+
+Table dim_interim_checkpoint {
+ic_dw_id bigint
+ic_created_time TIMESTAMP
+ic_dw_created_time TIMESTAMP
+ic_deleted_time TIMESTAMP
+ic_dw_deleted_time TIMESTAMP
+ic_updated_time TIMESTAMP
+ic_dw_updated_time TIMESTAMP
+ic_status smallint
+ic_id VARCHAR(36)
+ic_title VARCHAR(250)
+ic_language VARCHAR(50)
+ic_material_type VARCHAR(20)
+}
+
+Table dim_interim_checkpoint_rules {
+ic_rule_dw_id bigint
+ic_rule_created_time TIMESTAMP
+ic_rule_dw_created_time TIMESTAMP
+ic_rule_updated_time TIMESTAMP
+ic_rule_dw_updated_time TIMESTAMP
+ic_rule_status smallint
+ic_rule_attach_status smallint
+ic_rule_type smallint
+ic_rule_resource_type VARCHAR(50)
+ic_rule_ic_dw_id bigint
+ic_rule_outcome_dw_id bigint
+ic_rule_no_questions integer
+}
+
+Table dim_learning_objective {
+lo_dw_id bigint
+lo_created_time TIMESTAMP
+lo_updated_time TIMESTAMP
+lo_deleted_time TIMESTAMP
+lo_dw_created_time TIMESTAMP
+lo_dw_updated_time TIMESTAMP
+lo_status integer
+lo_id VARCHAR(36)
+lo_title VARCHAR(750)
+lo_code VARCHAR(750)
+lo_framework_code VARCHAR(50)
+lo_content_academic_year VARCHAR(50)
+lo_ccl_id bigint
+lo_action_status integer
+lo_skillable boolean
+lo_framework_id integer
+lo_user_id integer
+lo_template_id integer
+lo_content_academic_year_id integer
+lo_assessment_tool VARCHAR(50)
+lo_type VARCHAR(100)
+lo_publisher_id integer
+lo_published_date date
+lo_max_stars integer
+lo_theme_id bigint
+lo_duration integer
+lo_curriculum_id bigint
+lo_curriculum_grade_id bigint
+lo_curriculum_subject_id bigint
+lo_organisation VARCHAR(50)
+lo_language VARCHAR(50)
+lo_template_uuid VARCHAR(36)
+}
+
+Table dim_learning_objective_association {
+lo_association_dw_id bigint
+lo_association_lo_id VARCHAR(36)
+lo_association_created_time TIMESTAMP
+lo_association_updated_time TIMESTAMP
+lo_association_dw_created_time TIMESTAMP
+lo_association_dw_updated_time TIMESTAMP
+lo_association_status integer
+lo_association_lo_ccl_id bigint
+lo_association_id VARCHAR(36)
+lo_association_attach_status integer
+lo_association_type integer
+lo_association_derived boolean
+}
+
+Table dim_learning_path {
+learning_path_dw_id bigint
+learning_path_created_time TIMESTAMP
+learning_path_updated_time TIMESTAMP
+learning_path_deleted_time TIMESTAMP
+learning_path_dw_created_time TIMESTAMP
+learning_path_dw_updated_time TIMESTAMP
+learning_path_status integer
+learning_path_id VARCHAR(108)
+learning_path_uuid VARCHAR(36)
+learning_path_name VARCHAR(255)
+learning_path_lp_status VARCHAR(50)
+learning_path_language_type_script VARCHAR(50)
+learning_path_experiential_learning boolean
+learning_path_tutor_dhabi_enabled boolean
+learning_path_default boolean
+learning_path_school_id VARCHAR(36)
+learning_path_subject_id VARCHAR(36)
+learning_path_curriculum_id VARCHAR(50)
+learning_path_curriculum_grade_id VARCHAR(50)
+learning_path_curriculum_subject_id VARCHAR(50)
+learning_path_academic_year_id VARCHAR(36)
+learning_path_content_academic_year integer
+learning_path_class_id VARCHAR(36)
+}
+
+Table dim_lesson_assignment {
+lesson_assignment_dw_id bigint
+lesson_assignment_created_time TIMESTAMP
+lesson_assignment_updated_time TIMESTAMP
+lesson_assignment_dw_created_time TIMESTAMP
+lesson_assignment_dw_updated_time TIMESTAMP
+lesson_assignment_status integer
+lesson_assignment_student_dw_id bigint
+lesson_assignment_lo_dw_id bigint
+lesson_assignment_class_dw_id bigint
+lesson_assignment_teacher_dw_id integer
+lesson_assignment_assign_status integer
+lesson_assignment_type integer
+}
+
+Table dim_marketplace_config {
+dw_id bigint
+_trace_id VARCHAR(36)
+tenant_id VARCHAR(36)
+event_type VARCHAR(50)
+created_time TIMESTAMP
+updated_time TIMESTAMP
+deleted_time TIMESTAMP
+dw_created_time TIMESTAMP
+dw_updated_time TIMESTAMP
+status integer
+id VARCHAR(36)
+impact_type VARCHAR(50)
+star_cost bigint
+quota bigint
+}
+
+Table dim_organization {
+organization_dw_id bigint
+organization_created_time TIMESTAMP
+organization_deleted_time TIMESTAMP
+organization_updated_time TIMESTAMP
+organization_dw_created_time TIMESTAMP
+organization_dw_updated_time TIMESTAMP
+organization_dw_deleted_time TIMESTAMP
+organization_id VARCHAR(36)
+organization_name VARCHAR(50)
+organization_code VARCHAR(50)
+organization_country VARCHAR(20)
+organization_tenant_code VARCHAR(20)
+organization_status integer
+organization_created_by VARCHAR(36)
+organization_updated_by VARCHAR(36)
+}
+
+Table dim_outcome {
+outcome_dw_id bigint
+outcome_created_time TIMESTAMP
+outcome_updated_time TIMESTAMP
+outcome_deleted_time TIMESTAMP
+outcome_dw_created_time TIMESTAMP
+outcome_dw_updated_time TIMESTAMP
+outcome_status integer
+outcome_id VARCHAR(36)
+outcome_parent_id VARCHAR(36)
+outcome_type integer
+outcome_name VARCHAR(1500)
+outcome_curriculum_id bigint
+outcome_curriculum_grade_id bigint
+outcome_curriculum_subject_id bigint
+outcome_description VARCHAR(1500)
+}
+
+Table dim_outcome_association {
+outcome_association_dw_id bigint
+outcome_association_created_time TIMESTAMP
+outcome_association_updated_time TIMESTAMP
+outcome_association_dw_created_time TIMESTAMP
+outcome_association_dw_updated_time TIMESTAMP
+outcome_association_status integer
+outcome_association_outcome_id VARCHAR(36)
+outcome_association_id VARCHAR(36)
+outcome_association_type integer
+outcome_association_attach_status integer
+}
+
+Table dim_pacing_calendar {
+tennant VARCHAR(30)
+term integer
+school_grade integer
+school_subject integer
+level VARCHAR(30)
+curriculum VARCHAR(30)
+curriculum_grade integer
+curriculum_subject VARCHAR(30)
+week_no integer
+lesson_no integer
+lesson VARCHAR(100)
+lesson_type VARCHAR(30)
+lo_code VARCHAR(100)
+}
+
+Table dim_pacing_guide {
+pacing_id VARCHAR(36)
+pacing_dw_id bigint
+pacing_course_id VARCHAR(36)
+pacing_course_dw_id bigint
+pacing_class_id VARCHAR(36)
+pacing_class_dw_id bigint
+pacing_academic_calendar_id VARCHAR(36)
+pacing_academic_year_id VARCHAR(36)
+pacing_activity_id VARCHAR(36)
+pacing_activity_dw_id bigint
+pacing_tenant_id VARCHAR(36)
+pacing_tenant_dw_id bigint
+pacing_status integer
+pacing_activity_order integer
+pacing_ip_id VARCHAR(36)
+pacing_period_start_date date
+pacing_period_label VARCHAR(25)
+pacing_period_id VARCHAR(36)
+pacing_period_end_date date
+pacing_interval_id VARCHAR(36)
+pacing_interval_start_date date
+pacing_interval_label VARCHAR(240)
+pacing_interval_end_date date
+pacing_created_time TIMESTAMP
+pacing_dw_created_time TIMESTAMP
+pacing_updated_time TIMESTAMP
+pacing_dw_updated_time TIMESTAMP
+pacing_interval_type VARCHAR(50)
+}
+
+Table dim_pathway_target {
+pt_dw_id bigint
+pt_id VARCHAR(36)
+pt_created_time TIMESTAMP
+pt_dw_created_time TIMESTAMP
+pt_status integer
+pt_active_until TIMESTAMP
+pt_target_id VARCHAR(36)
+pt_target_dw_id bigint
+pt_target_state VARCHAR(20)
+pt_start_date VARCHAR(10)
+pt_end_date VARCHAR(10)
+pt_tenant_id VARCHAR(36)
+pt_tenant_dw_id bigint
+pt_school_id VARCHAR(36)
+pt_school_dw_id bigint
+pt_grade_id VARCHAR(36)
+pt_grade_dw_id bigint
+pt_class_id VARCHAR(36)
+pt_class_dw_id bigint
+pt_teacher_id VARCHAR(36)
+pt_teacher_dw_id bigint
+pt_pathway_id VARCHAR(36)
+pt_pathway_dw_id bigint
+}
+
+
+Table dim_question {
+rel_question_dw_id bigint
+question_dw_id bigint
+question_created_time TIMESTAMP
+question_updated_time TIMESTAMP
+question_deleted_time TIMESTAMP
+question_dw_created_time TIMESTAMP
+question_dw_updated_time TIMESTAMP
+question_status integer
+question_id VARCHAR(36)
+question_code VARCHAR(128)
+question_triggered_by VARCHAR(50)
+question_language VARCHAR(50)
+question_type VARCHAR(50)
+question_max_score double
+question_version integer
+question_stage VARCHAR(50)
+question_variant VARCHAR(5)
+question_active_until TIMESTAMP
+question_format_type VARCHAR(30)
+question_resource_type VARCHAR(10)
+question_summative_assessment boolean
+question_difficulty_level VARCHAR(50)
+question_lexile_level VARCHAR(36)
+question_author VARCHAR(70)
+question_authored_date TIMESTAMP
+question_skill_id VARCHAR(36)
+question_cefr_level VARCHAR(50)
+question_proficiency VARCHAR(50)
+question_knowledge_dimensions VARCHAR(128)
+}
+
+Table dim_question_pool {
+question_pool_dw_id bigint
+question_pool_id VARCHAR(36)
+question_pool_name VARCHAR(256)
+question_pool_app_status VARCHAR(24)
+question_pool_triggered_by VARCHAR(36)
+question_pool_question_code_prefix VARCHAR(128)
+question_pool_status integer
+question_pool_created_time TIMESTAMP
+question_pool_dw_created_time TIMESTAMP
+question_pool_updated_time TIMESTAMP
+question_pool_deleted_time TIMESTAMP
+question_pool_dw_updated_time TIMESTAMP
+}
+
+Table dim_question_pool_association {
+question_pool_association_dw_id bigint
+question_pool_association_created_time TIMESTAMP
+question_pool_association_updated_time TIMESTAMP
+question_pool_association_dw_created_time TIMESTAMP
+question_pool_association_dw_updated_time TIMESTAMP
+question_pool_association_status integer
+question_pool_association_assign_status integer
+question_pool_association_question_code VARCHAR(120)
+question_pool_association_question_pool_dw_id bigint
+question_pool_association_triggered_by VARCHAR(100)
+}
+
+Table dim_role {
+role_dw_id bigint
+role_name VARCHAR(50)
+role_id VARCHAR(50)
+role_uuid VARCHAR(36)
+role_created_time TIMESTAMP
+role_updated_time TIMESTAMP
+role_dw_created_time TIMESTAMP
+role_dw_updated_time TIMESTAMP
+role_organization_name VARCHAR(50)
+role_organization_code VARCHAR(50)
+role_type VARCHAR(50)
+role_category_id VARCHAR(36)
+role_is_ccl boolean
+role_status integer
+role_description VARCHAR(1536)
+role_predefined boolean
+}
+
+Table dim_school {
+school_dw_id bigint
+school_created_time TIMESTAMP
+school_updated_time TIMESTAMP
+school_deleted_time TIMESTAMP
+school_dw_created_time TIMESTAMP
+school_dw_updated_time TIMESTAMP
+school_status integer
+school_id VARCHAR(36)
+school_name VARCHAR(256)
+school_address_line VARCHAR(255)
+school_post_box VARCHAR(10)
+school_city_name VARCHAR(100)
+school_country_name VARCHAR(100)
+school_latitude numeric(106)
+school_longitude numeric(106)
+school_first_day VARCHAR(30)
+school_timezone VARCHAR(64)
+school_composition VARCHAR(20)
+school_tenant_id VARCHAR(36)
+school_alias VARCHAR(256)
+school_source_id VARCHAR(256)
+school_cx_name_ar VARCHAR(200)
+school_cx_zone VARCHAR(50)
+school_cx_cluster VARCHAR(50)
+school_cx_batch integer
+school_cx_status integer
+school_cx_report integer
+school_cx_last_updated TIMESTAMP
+school_cx_id bigint
+school_content_repository_dw_id bigint
+school_organization_dw_id bigint
+school_content_repository_id VARCHAR(36)
+school_organization_code VARCHAR(50)
+_is_complete boolean
+}
+
+Table dim_school_academic_year_association {
+saya_dw_id bigint
+saya_school_id VARCHAR(36)
+saya_academic_year_id VARCHAR(36)
+saya_status integer
+saya_created_time TIMESTAMP
+saya_updated_time TIMESTAMP
+saya_dw_created_time TIMESTAMP
+saya_dw_updated_time TIMESTAMP
+saya_previous_academic_year_id VARCHAR(36)
+saya_type VARCHAR(36)
+}
+
+Table dim_school_content_repository_association {
+scra_dw_id bigint
+scra_school_id VARCHAR(36)
+scra_school_dw_id bigint
+scra_content_repository_id VARCHAR(36)
+scra_content_repository_dw_id bigint
+scra_status integer
+scra_active_until TIMESTAMP
+scra_created_time TIMESTAMP
+scra_dw_created_time TIMESTAMP
+}
+
+Table dim_section {
+section_dw_id bigint
+section_created_time TIMESTAMP
+section_updated_time TIMESTAMP
+section_deleted_time TIMESTAMP
+section_dw_created_time TIMESTAMP
+section_dw_updated_time TIMESTAMP
+section_status integer
+section_id VARCHAR(36)
+section_alias VARCHAR(256)
+section_name VARCHAR(256)
+section_enabled boolean
+tenant_id VARCHAR(36)
+grade_id VARCHAR(36)
+school_id VARCHAR(36)
+section_source_id VARCHAR(256)
+}
+
+Table dim_section_schedule {
+rel_section_schedule_dw_id bigint
+section_id VARCHAR(36)
+section_schedule_day_of_week VARCHAR(10)
+section_schedule_start_time VARCHAR(20)
+section_schedule_end_time VARCHAR(20)
+section_schedule_created_time TIMESTAMP
+section_schedule_updated_time TIMESTAMP
+section_schedule_deleted_time TIMESTAMP
+section_schedule_dw_created_time TIMESTAMP
+section_schedule_dw_updated_time TIMESTAMP
+section_schedule_active_until TIMESTAMP
+section_schedule_status integer
+section_schedule_section_dw_id bigint
+section_schedule_tenant_dw_id bigint
+section_schedule_subject_dw_id bigint
+section_schedule_teacher_dw_id bigint
+}
+
+Table dim_skill {
+skill_dw_id bigint
+skill_created_time TIMESTAMP
+skill_updated_time TIMESTAMP
+skill_deleted_time TIMESTAMP
+skill_dw_created_time TIMESTAMP
+skill_dw_updated_time TIMESTAMP
+skill_status integer
+skill_id VARCHAR(36)
+skill_name VARCHAR(500)
+skill_code VARCHAR(150)
+}
+
+Table dim_skill_association {
+skill_association_dw_id bigint
+skill_association_created_time TIMESTAMP
+skill_association_updated_time TIMESTAMP
+skill_association_dw_created_time TIMESTAMP
+skill_association_dw_updated_time TIMESTAMP
+skill_association_status integer
+skill_association_skill_id VARCHAR(36)
+skill_association_skill_code VARCHAR(50)
+skill_association_id VARCHAR(36)
+skill_association_code VARCHAR(50)
+skill_association_type integer
+skill_association_attach_status integer
+skill_association_is_previous boolean
+}
+
+Table dim_staff_user {
+rel_staff_user_dw_id bigint
+staff_user_event_type VARCHAR(50)
+staff_user_created_time TIMESTAMP
+staff_user_dw_created_time TIMESTAMP
+staff_user_active_until TIMESTAMP
+staff_user_status integer
+staff_user_id VARCHAR(36)
+staff_user_dw_id bigint
+staff_user_onboarded boolean
+staff_user_expirable boolean
+staff_user_exclude_from_report boolean
+staff_user_avatar VARCHAR(100)
+staff_user_enabled boolean
+}
+
+Table dim_staff_user_school_role_association {
+susra_dw_id bigint
+susra_event_type VARCHAR(50)
+susra_staff_id VARCHAR(36)
+susra_staff_dw_id bigint
+susra_school_id VARCHAR(36)
+susra_school_dw_id bigint
+susra_role_name VARCHAR(50)
+susra_role_uuid VARCHAR(36)
+susra_role_dw_id bigint
+susra_organization VARCHAR(50)
+susra_status integer
+susra_created_time TIMESTAMP
+susra_dw_created_time TIMESTAMP
+susra_active_until TIMESTAMP
+}
+
+Table dim_step {
+step_id integer
+step_code VARCHAR(100)
+step_content_type VARCHAR(50)
+step_framework_display_name VARCHAR(50)
+step_short_code VARCHAR(36)
+step_icon_term VARCHAR(36)
+step_required boolean
+step_flag VARCHAR(50)
+step_retry boolean
+}
+
+Table dim_step_instance {
+step_instance_dw_id bigint
+step_instance_lo_id VARCHAR(36)
+step_instance_created_time TIMESTAMP
+step_instance_updated_time TIMESTAMP
+step_instance_dw_created_time TIMESTAMP
+step_instance_dw_updated_time TIMESTAMP
+step_instance_status integer
+step_instance_step_id integer
+step_instance_step_uuid VARCHAR(36)
+step_instance_lo_ccl_id bigint
+step_instance_id VARCHAR(36)
+step_instance_attach_status integer
+step_instance_type integer
+step_instance_pool_name VARCHAR(255)
+step_instance_difficulty_level VARCHAR(50)
+step_instance_resource_type VARCHAR(50)
+step_instance_questions integer
+step_instance_pool_id VARCHAR(36)
+step_instance_template_uuid VARCHAR(36)
+step_instance_title VARCHAR(255)
+step_instance_media_type VARCHAR(50)
+}
+
+Table dim_student {
+rel_student_dw_id bigint
+student_created_time TIMESTAMP
+student_updated_time TIMESTAMP
+student_deleted_time TIMESTAMP
+student_dw_created_time TIMESTAMP
+student_dw_updated_time TIMESTAMP
+student_active_until TIMESTAMP
+student_status integer
+student_id VARCHAR(36)
+student_username VARCHAR(256)
+student_dw_id bigint
+student_school_dw_id bigint
+student_grade_dw_id bigint
+student_section_dw_id bigint
+student_tags VARCHAR(256)
+student_special_needs VARCHAR(2000)
+}
+
+Table dim_subject {
+subject_dw_id bigint
+subject_created_time TIMESTAMP
+subject_updated_time TIMESTAMP
+subject_deleted_time TIMESTAMP
+subject_dw_created_time TIMESTAMP
+subject_dw_updated_time TIMESTAMP
+subject_status integer
+subject_id VARCHAR(36)
+subject_name VARCHAR(255)
+subject_online boolean
+subject_gen_subject VARCHAR(255)
+grade_id VARCHAR(36)
+}
+
+Table dim_tag {
+tag_created_time TIMESTAMP
+tag_updated_time TIMESTAMP
+tag_dw_created_time TIMESTAMP
+tag_dw_updated_time TIMESTAMP
+tag_id VARCHAR(36)
+tag_name VARCHAR(1024)
+tag_status integer
+tag_type VARCHAR(36)
+tag_association_id VARCHAR(36)
+tag_association_dw_id bigint
+tag_association_type integer
+tag_association_attach_status integer
+tag_dw_id bigint
+}
+
+Table dim_teacher {
+rel_teacher_dw_id bigint
+teacher_created_time TIMESTAMP
+teacher_updated_time TIMESTAMP
+teacher_deleted_time TIMESTAMP
+teacher_dw_created_time TIMESTAMP
+teacher_dw_updated_time TIMESTAMP
+teacher_active_until TIMESTAMP
+teacher_status integer
+teacher_id VARCHAR(36)
+teacher_dw_id bigint
+teacher_subject_dw_id bigint
+teacher_school_dw_id bigint
+}
+
+Table dim_teacher_feedback_thread {
+tft_dw_id bigint
+tft_status smallint
+tft_created_time TIMESTAMP
+tft_dw_created_time TIMESTAMP
+tft_deleted_time TIMESTAMP
+tft_updated_time TIMESTAMP
+tft_dw_updated_time TIMESTAMP
+tft_thread_id VARCHAR(36)
+tft_actor_type smallint
+tft_guardian_dw_id bigint
+tft_message_id VARCHAR(36)
+tft_response_enabled boolean
+tft_feedback_type smallint
+tft_teacher_dw_id bigint
+tft_student_dw_id bigint
+tft_class_dw_id bigint
+tft_is_read boolean
+tft_event_subject smallint
+tft_is_first_of_thread boolean
+}
+
+Table dim_teacher_test {
+tt_dw_id bigint
+tt_test_id VARCHAR(36)
+tt_tenant_id VARCHAR(36)
+tt_test_class_id VARCHAR(36)
+tt_test_title VARCHAR(255)
+tt_test_domain_id VARCHAR(36)
+tt_test_status VARCHAR(50)
+tt_test_created_by_id VARCHAR(36)
+tt_status integer
+tt_test_updated_by_id VARCHAR(36)
+tt_test_published_by_id VARCHAR(36)
+tt_created_time TIMESTAMP
+tt_updated_time TIMESTAMP
+tt_deleted_time TIMESTAMP
+tt_dw_created_time TIMESTAMP
+tt_dw_updated_time TIMESTAMP
+tt_dw_deleted_time TIMESTAMP
+tt_test_blueprint_id VARCHAR(36)
+}
+
+Table dim_teacher_test_blueprint {
+ttb_dw_id bigint
+ttb_created_time TIMESTAMP
+ttb_updated_time TIMESTAMP
+ttb_deleted_time TIMESTAMP
+ttb_dw_created_time TIMESTAMP
+ttb_dw_updated_time TIMESTAMP
+ttb_dw_deleted_time TIMESTAMP
+ttb_test_blueprint_id VARCHAR(36)
+ttb_tenant_id VARCHAR(36)
+ttb_test_blueprint_class_id VARCHAR(36)
+ttb_test_blueprint_title VARCHAR(765)
+ttb_test_blueprint_domain_id VARCHAR(36)
+ttb_test_blueprint_guidance_type VARCHAR(255)
+ttb_test_blueprint_major_version integer
+ttb_test_blueprint_minor_version integer
+ttb_test_blueprint_revision_version integer
+ttb_test_blueprint_number_of_question integer
+ttb_test_blueprint_created_by_id VARCHAR(36)
+ttb_test_blueprint_updated_by_id VARCHAR(36)
+ttb_test_blueprint_published_by_id VARCHAR(36)
+ttb_test_blueprint_status VARCHAR(40)
+ttb_status integer
+}
+
+Table dim_teacher_test_blueprint_lesson_association {
+ttbla_dw_id bigint
+ttbla_test_blueprint_id VARCHAR(36)
+ttbla_lesson_id VARCHAR(36)
+ttbla_status integer
+ttbla_dw_created_time TIMESTAMP
+ttbla_created_time TIMESTAMP
+ttbla_active_until TIMESTAMP
+}
+
+Table dim_teacher_test_candidate_association {
+ttca_dw_id bigint
+ttca_test_delivery_id VARCHAR(36)
+ttca_test_id VARCHAR(36)
+ttca_test_candidate_id VARCHAR(36)
+ttca_status integer
+ttca_active_until TIMESTAMP
+ttca_created_time TIMESTAMP
+ttca_dw_created_time TIMESTAMP
+}
+
+Table dim_teacher_test_delivery_settings {
+ttds_dw_id bigint
+ttds_test_id VARCHAR(36)
+ttds_tenant_id VARCHAR(36)
+ttds_test_delivery_id VARCHAR(36)
+ttds_test_start_time TIMESTAMP
+ttds_test_end_time TIMESTAMP
+ttds_allow_late_submission boolean
+ttds_title VARCHAR(255)
+ttds_stars integer
+ttds_randomized boolean
+ttds_delivery_status VARCHAR(40)
+ttds_status integer
+ttds_created_time TIMESTAMP
+ttds_updated_time TIMESTAMP
+ttds_deleted_time TIMESTAMP
+ttds_dw_created_time TIMESTAMP
+ttds_dw_updated_time TIMESTAMP
+ttds_dw_deleted_time TIMESTAMP
+}
+
+Table dim_teacher_test_item_association {
+ttia_dw_id bigint
+ttia_test_id VARCHAR(36)
+ttia_test_item_id VARCHAR(36)
+ttia_status integer
+ttia_dw_created_time TIMESTAMP
+ttia_created_time TIMESTAMP
+ttia_active_until TIMESTAMP
+}
+
+Table dim_team {
+team_dw_id bigint
+team_created_time TIMESTAMP
+team_updated_time TIMESTAMP
+team_deleted_time TIMESTAMP
+team_dw_created_time TIMESTAMP
+team_dw_updated_time TIMESTAMP
+team_status integer
+team_id VARCHAR(36)
+team_name VARCHAR(255)
+team_class_id VARCHAR(36)
+team_teacher_id VARCHAR(36)
+}
+
+Table dim_team_student_association {
+rel_team_student_association_dw_id bigint
+team_student_association_created_time TIMESTAMP
+team_student_association_updated_time TIMESTAMP
+team_student_association_dw_created_time TIMESTAMP
+team_student_association_dw_updated_time TIMESTAMP
+team_student_association_status smallint
+team_student_association_active_until TIMESTAMP
+team_student_association_team_dw_id bigint
+team_student_association_student_dw_id bigint
+}
+
+Table dim_template {
+template_dw_id bigint
+template_status smallint
+template_created_time TIMESTAMP
+template_updated_time TIMESTAMP
+template_deleted_time TIMESTAMP
+template_dw_created_time TIMESTAMP
+template_dw_updated_time TIMESTAMP
+template_id bigint
+template_framework_id bigint
+template_title VARCHAR(750)
+template_step_id bigint
+template_step_display_name VARCHAR(90)
+template_organisation VARCHAR(50)
+}
+
+Table dim_tenant {
+tenant_dw_id bigint
+tenant_id VARCHAR(36)
+tenant_name VARCHAR(765)
+tenant_timezone VARCHAR(100)
+}
+
+Table dim_term {
+term_dw_id bigint
+term_created_time TIMESTAMP
+term_updated_time TIMESTAMP
+term_deleted_time TIMESTAMP
+term_dw_created_time TIMESTAMP
+term_dw_updated_time TIMESTAMP
+term_status integer
+term_id VARCHAR(36)
+term_academic_period_order integer
+term_curriculum_id bigint
+term_content_academic_year_id bigint
+term_start_date date
+term_end_date date
+term_content_repository_dw_id bigint
+term_content_repository_id VARCHAR(36)
+}
+
+Table dim_test_testpart_association {
+dw_id bigint
+_trace_id VARCHAR(36)
+tenant_id VARCHAR(36)
+event_type VARCHAR(50)
+created_time TIMESTAMP
+dw_created_time TIMESTAMP
+active_until TIMESTAMP
+status integer
+id VARCHAR(36)
+version_id VARCHAR(36)
+version bigint
+title VARCHAR(768)
+testpart_id VARCHAR(36)
+testpart_version_id VARCHAR(36)
+app_status VARCHAR(36)
+user_type VARCHAR(36)
+active boolean
+}
+
+Table dim_testpart {
+dw_id bigint
+_trace_id VARCHAR(36)
+tenant_id VARCHAR(36)
+event_type VARCHAR(50)
+created_time TIMESTAMP
+dw_created_time TIMESTAMP
+active_until TIMESTAMP
+status integer
+published_on TIMESTAMP
+id VARCHAR(36)
+version_id VARCHAR(36)
+version bigint
+title VARCHAR(768)
+reference_code VARCHAR(50)
+app_status VARCHAR(36)
+user_id VARCHAR(36)
+user_type VARCHAR(36)
+active boolean
+type VARCHAR(50)
+subject VARCHAR(36)
+language VARCHAR(50)
+selection_mode VARCHAR(20)
+skill VARCHAR(20)
+}
+
+Table dim_testpart_section_association {
+dw_id bigint
+_trace_id VARCHAR(36)
+tenant_id VARCHAR(36)
+event_type VARCHAR(50)
+created_time TIMESTAMP
+dw_created_time TIMESTAMP
+active_until TIMESTAMP
+status integer
+id VARCHAR(36)
+title VARCHAR(768)
+testpart_id VARCHAR(36)
+testpart_version_id VARCHAR(36)
+question_id VARCHAR(36)
+question_code VARCHAR(100)
+submission_mode VARCHAR(50)
+navigation_mode VARCHAR(50)
+time_limit_seconds integer
+shuffle_questions boolean
+type VARCHAR(50)
+}
+
+Table dim_theme {
+theme_dw_id bigint
+theme_status smallint
+theme_created_time TIMESTAMP
+theme_updated_time TIMESTAMP
+theme_deleted_time TIMESTAMP
+theme_dw_created_time TIMESTAMP
+theme_dw_updated_time TIMESTAMP
+theme_id bigint
+theme_curriculum_id bigint
+theme_curriculum_grade_id bigint
+theme_curriculum_subject_id bigint
+theme_name VARCHAR(750)
+theme_created_at TIMESTAMP
+theme_updated_at TIMESTAMP
+}
+
+Table dim_week {
+week_dw_id bigint
+week_created_time TIMESTAMP
+week_updated_time TIMESTAMP
+week_deleted_time TIMESTAMP
+week_dw_created_time TIMESTAMP
+week_dw_updated_time TIMESTAMP
+week_status integer
+week_id VARCHAR(36)
+week_number integer
+week_start_date date
+week_end_date date
+week_term_id VARCHAR(36)
+}
+
+Table dim_weekly_goal_type {
+weekly_goal_type_dw_id bigint
+weekly_goal_type_created_time TIMESTAMP
+weekly_goal_type_dw_created_time TIMESTAMP
+weekly_goal_type_id VARCHAR(36)
+weekly_goal_type_tenant_id VARCHAR(36)
+weekly_goal_type_total_activity_count integer
+weekly_goal_type_stars_to_award integer
+}
+
+Table fact_activity_setting {
+fas_activity_dw_id bigint
+fas_activity_id VARCHAR(36)
+fas_class_dw_id bigint
+fas_class_id VARCHAR(36)
+fas_created_time TIMESTAMP
+fas_dw_created_time TIMESTAMP
+fas_dw_id bigint
+fas_grade_dw_id bigint
+fas_grade_id VARCHAR(36)
+fas_k12_grade integer
+fas_open_path_enabled boolean
+fas_school_dw_id bigint
+fas_school_id VARCHAR(36)
+fas_class_gen_subject_name VARCHAR(50)
+fas_teacher_dw_id bigint
+fas_teacher_id VARCHAR(36)
+fas_tenant_dw_id bigint
+fas_tenant_id VARCHAR(36)
+}
+
+Table fact_adt_next_question {
+fanq_dw_id bigint
+fanq_created_time TIMESTAMP
+fanq_dw_created_time TIMESTAMP
+fanq_date_dw_id bigint
+fanq_id VARCHAR(36)
+fanq_fle_ls_dw_id VARCHAR(36)
+fanq_student_dw_id VARCHAR(36)
+fanq_question_pool_id VARCHAR(36)
+fanq_tenant_dw_id VARCHAR(36)
+fanq_response boolean
+fanq_proficiency double
+fanq_next_question_id VARCHAR(36)
+fanq_time_spent double
+fanq_current_question_id VARCHAR(36)
+fanq_intest_progress double
+fanq_status integer
+fanq_curriculum_subject_id integer
+fanq_curriculum_subject_name VARCHAR(36)
+fanq_fle_ls_uuid VARCHAR(36)
+fanq_language VARCHAR(50)
+fanq_standard_error double
+fanq_attempt integer
+fanq_grade integer
+fanq_grade_id VARCHAR(36)
+fanq_grade_dw_id bigint
+fanq_academic_year integer
+fanq_academic_year_id VARCHAR(36)
+fanq_academic_year_dw_id bigint
+fanq_academic_term smallint
+fanq_class_subject_name VARCHAR(64)
+fanq_skill VARCHAR(20)
+}
+
+Table fact_adt_student_report {
+fasr_dw_id bigint
+fasr_created_time TIMESTAMP
+fasr_dw_created_time TIMESTAMP
+fasr_date_dw_id bigint
+fasr_tenant_dw_id bigint
+fasr_student_dw_id bigint
+fasr_question_pool_id VARCHAR(36)
+fasr_fle_ls_dw_id bigint
+fasr_id VARCHAR(36)
+fasr_final_score double
+fasr_final_proficiency double
+fasr_total_time_spent double
+fasr_academic_year integer
+fasr_academic_term integer
+fasr_test_id VARCHAR(36)
+fasr_curriculum_subject_id bigint
+fasr_curriculum_subject_name VARCHAR(255)
+fasr_status integer
+fasr_final_result VARCHAR(20)
+fasr_final_uncertainty double
+fasr_framework VARCHAR(36)
+fasr_fle_ls_uuid VARCHAR(36)
+fasr_final_standard_error double
+fasr_language VARCHAR(50)
+fasr_school_dw_id bigint
+fasr_attempt integer
+fasr_final_grade integer
+fasr_forecast_score double
+fasr_final_category VARCHAR(50)
+fasr_grade integer
+fasr_grade_id VARCHAR(36)
+fasr_grade_dw_id bigint
+fasr_academic_year_id VARCHAR(36)
+fasr_academic_year_dw_id bigint
+fasr_secondary_result VARCHAR(50)
+fasr_class_subject_name VARCHAR(64)
+fasr_skill VARCHAR(20)
+}
+
+Table fact_announcement {
+fa_dw_id bigint
+fa_created_time TIMESTAMP
+fa_dw_created_time TIMESTAMP
+fa_status integer
+fa_tenant_dw_id integer
+fa_id VARCHAR(36)
+fa_admin_dw_id integer
+fa_role_dw_id integer
+fa_recipient_type integer
+fa_recipient_type_description VARCHAR(50)
+fa_recipient_dw_id integer
+fa_has_attachment boolean
+fa_type integer
+}
+
+Table fact_assessment_answer_submitted {
+dw_id bigint
+_trace_id VARCHAR(36)
+event_type VARCHAR(100)
+created_time TIMESTAMP
+dw_created_time TIMESTAMP
+date_dw_id bigint
+assessment_id VARCHAR(36)
+tenant_id VARCHAR(36)
+tenant_dw_id bigint
+academic_year_tag VARCHAR(10)
+attempt_number integer
+candidate_id VARCHAR(36)
+candidate_dw_id bigint
+class_id VARCHAR(36)
+class_dw_id bigint
+grade integer
+grade_id VARCHAR(36)
+grade_dw_id bigint
+time_spent integer
+subject VARCHAR(10)
+school_id VARCHAR(36)
+school_dw_id bigint
+language VARCHAR(10)
+question_id VARCHAR(36)
+question_code VARCHAR(50)
+question_version integer
+test_level_session_id VARCHAR(36)
+test_level_version bigint
+test_level_id VARCHAR(36)
+test_level_dw_id bigint
+test_level_section_id VARCHAR(36)
+test_level_section_dw_id bigint
+reference_code VARCHAR(50)
+test_level VARCHAR(20)
+skill VARCHAR(20)
+material_type VARCHAR(20)
+}
+
+Table fact_assessment_lock_action {
+dw_id bigint
+_trace_id VARCHAR(36)
+event_type VARCHAR(36)
+created_time TIMESTAMP
+dw_created_time TIMESTAMP
+date_dw_id bigint
+id VARCHAR(36)
+tenant_id VARCHAR(36)
+tenant_dw_id bigint
+academic_year_tag VARCHAR(10)
+attempt bigint
+teacher_id VARCHAR(36)
+teacher_dw_id bigint
+candidate_id VARCHAR(36)
+candidate_dw_id bigint
+school_id VARCHAR(36)
+school_dw_id bigint
+class_id VARCHAR(36)
+class_dw_id bigint
+test_part_session_id VARCHAR(36)
+test_level_name VARCHAR(20)
+test_level_dw_id bigint
+test_level_id VARCHAR(36)
+test_level_version bigint
+skill VARCHAR(50)
+subject VARCHAR(50)
+}
+
+Table fact_assignment_submission {
+assignment_submission_dw_id bigint
+assignment_submission_date_dw_id VARCHAR(36)
+assignment_submission_created_time TIMESTAMP
+assignment_submission_dw_created_time TIMESTAMP
+assignment_submission_id VARCHAR(36)
+assignment_submission_assignment_id VARCHAR(36)
+assignment_submission_referrer_id VARCHAR(36)
+assignment_submission_type VARCHAR(100)
+assignment_submission_updated_on TIMESTAMP
+assignment_submission_returned_on TIMESTAMP
+assignment_submission_submitted_on TIMESTAMP
+assignment_submission_graded_on TIMESTAMP
+assignment_submission_evaluated_on TIMESTAMP
+assignment_submission_status VARCHAR(20)
+assignment_submission_student_attachment_file_name VARCHAR(1000)
+assignment_submission_student_attachment_path VARCHAR(1000)
+assignment_submission_teacher_attachment_path VARCHAR(1000)
+assignment_submission_teacher_attachment_file_name VARCHAR(1000)
+assignment_submission_teacher_score double
+assignment_submission_has_teacher_comment boolean
+assignment_submission_has_student_comment boolean
+assignment_submission_assignment_instance_id VARCHAR(36)
+assignment_submission_student_dw_id VARCHAR(36)
+assignment_submission_teacher_dw_id VARCHAR(36)
+assignment_submission_tenant_dw_id VARCHAR(36)
+eventdate date
+assignment_submission_resubmission_count integer
+}
+
+Table fact_badge_awarded {
+fba_dw_id bigint pk
+fba_id VARCHAR(36)
+fba_created_time TIMESTAMP
+fba_badge_dw_id bigint
+fba_student_dw_id bigint
+fba_school_dw_id bigint
+fba_grade_dw_id bigint
+fba_section_dw_id bigint
+fba_tenant_dw_id bigint
+fba_academic_year_dw_id bigint
+fba_content_repository_dw_id bigint
+fba_organization_dw_id bigint
+fba_date_dw_id bigint
+fba_dw_created_time TIMESTAMP
+}
+
+Table fact_candidate_assessment_progress {
+dw_id bigint
+_trace_id VARCHAR(36)
+event_type VARCHAR(50)
+created_time TIMESTAMP
+dw_created_time TIMESTAMP
+date_dw_id bigint
+tenant_id VARCHAR(36)
+tenant_dw_id bigint
+academic_year_tag VARCHAR(9)
+assessment_id VARCHAR(36)
+school_id VARCHAR(36)
+school_dw_id bigint
+grade_id VARCHAR(36)
+grade_dw_id bigint
+candidate_id VARCHAR(36)
+candidate_dw_id bigint
+class_id VARCHAR(36)
+class_dw_id bigint
+grade integer
+material_type VARCHAR(50)
+attempt_number integer
+skill VARCHAR(20)
+subject VARCHAR(50)
+language VARCHAR(20)
+status VARCHAR(20)
+test_level_session_id VARCHAR(36)
+test_level VARCHAR(20)
+test_id VARCHAR(36)
+test_version bigint
+test_dw_id bigint
+test_level_id VARCHAR(36)
+test_level_version bigint
+test_level_version_dw_id bigint
+test_level_section_id VARCHAR(36)
+test_level_section_dw_id bigint
+report_id VARCHAR(36)
+total_timespent bigint
+final_score bigint
+final_grade bigint
+final_category VARCHAR(20)
+final_uncertainty double
+time_to_return bigint
+framework VARCHAR(20)
+}
+
+Table fact_challenge_game_progress {
+fgc_dw_id bigint
+fgc_created_time TIMESTAMP
+fgc_dw_created_time TIMESTAMP
+fgc_date_dw_id bigint
+fgc_id VARCHAR(36)
+fgc_game_id VARCHAR(36)
+fgc_state VARCHAR(20)
+fgc_tenant_id VARCHAR(36)
+fgc_tenant_dw_id bigint
+fgc_student_id VARCHAR(36)
+fgc_student_dw_id bigint
+fgc_academic_year_id VARCHAR(36)
+fgc_academic_year_dw_id bigint
+fgc_academic_year_tag VARCHAR(10)
+fgc_school_id VARCHAR(36)
+fgc_school_dw_id bigint
+fgc_grade integer
+fgc_organization VARCHAR(100)
+fgc_score integer
+}
+
+Table fact_content_session {
+fcs_dw_id bigint
+fcs_created_time TIMESTAMP
+fcs_dw_created_time TIMESTAMP
+fcs_date_dw_id bigint
+fcs_id VARCHAR(36)
+fcs_event_type smallint
+fcs_is_start boolean
+fcs_ls_id VARCHAR(36)
+fcs_content_id VARCHAR(36)
+fcs_lo_dw_id bigint
+fcs_student_dw_id bigint
+fcs_class_dw_id bigint
+fcs_grade_dw_id bigint
+fcs_tenant_dw_id bigint
+fcs_school_dw_id bigint
+fcs_ay_dw_id bigint
+fcs_section_dw_id bigint
+fcs_lp_dw_id bigint
+fcs_ip_id VARCHAR(36)
+fcs_outside_of_school boolean
+fcs_content_academic_year VARCHAR(4)
+fcs_app_timespent double
+fcs_app_score double
+}
+
+Table fact_conversation_occurred {
+fco_dw_id bigint
+fco_created_time TIMESTAMP
+fco_dw_created_time TIMESTAMP
+fco_date_dw_id bigint
+fco_id VARCHAR(36)
+fco_student_dw_id bigint
+fco_school_dw_id bigint
+fco_tenant_dw_id bigint
+fco_grade_dw_id bigint
+fco_subject_dw_id bigint
+fco_section_dw_id bigint
+fco_lo_dw_id bigint
+fco_answer_id VARCHAR(36)
+fco_source VARCHAR(256)
+fco_question VARCHAR(10230)
+fco_answer VARCHAR(10230)
+fco_arabic_answer VARCHAR(10230)
+fco_suggestions VARCHAR(10230)
+fco_learning_session_id VARCHAR(36)
+fco_subject_category VARCHAR(256)
+}
+
+Table fact_cx_maturity_indicator {
+fcmi_dw_id bigint
+fcmi_id bigint
+fcmi_maturity_dw_id bigint
+fcmi_indicator_id VARCHAR(25)
+fcmi_indicator_value integer
+fcmi_created_time TIMESTAMP
+fcmi_dw_created_time TIMESTAMP
+}
+
+Table fact_cx_observation_indicator {
+fcoi_dw_id bigint
+fcoi_id bigint
+fcoi_observation_dw_id bigint
+fcoi_indicator_id bigint
+fcoi_indicator_value double
+fcoi_coaching_time TIMESTAMP
+fcoi_created_time TIMESTAMP
+fcoi_dw_created_time TIMESTAMP
+}
+
+Table fact_ebook_progress {
+fep_dw_id bigint
+fep_id VARCHAR(36)
+fep_created_time TIMESTAMP
+fep_dw_created_time TIMESTAMP
+fep_date_dw_id bigint
+fep_session_id VARCHAR(36)
+fep_exp_id VARCHAR(36)
+fep_tenant_id VARCHAR(36)
+fep_tenant_dw_id bigint
+fep_student_id VARCHAR(36)
+fep_student_dw_id bigint
+feb_ay_tag VARCHAR(10)
+fep_school_id VARCHAR(36)
+fep_school_dw_id bigint
+fep_grade_id VARCHAR(36)
+fep_grade_dw_id bigint
+fep_class_id VARCHAR(36)
+fep_class_dw_id bigint
+fep_lo_id VARCHAR(36)
+fep_lo_dw_id bigint
+fep_step_instance_step_id VARCHAR(36)
+fep_content_hash VARCHAR(256)
+fep_material_type VARCHAR(20)
+fep_title VARCHAR(512)
+fep_total_pages integer
+fep_has_audio boolean
+fep_action VARCHAR(50)
+fep_is_last_page boolean
+fep_location VARCHAR(100)
+fep_state VARCHAR(50)
+fep_time_spent numeric(180)
+fep_bookmark_location VARCHAR(255)
+fep_highlight_location VARCHAR(255)
+}
+
+Table fact_experience_submitted {
+fes_dw_id bigint
+fes_created_time TIMESTAMP
+fes_dw_created_time TIMESTAMP
+fes_date_dw_id bigint
+fes_id VARCHAR(36)
+fes_exp_dw_id bigint
+fes_ls_dw_id bigint
+fes_step_id VARCHAR(36)
+fes_lo_dw_id bigint
+fes_student_dw_id bigint
+fes_section_dw_id bigint
+fes_class_dw_id bigint
+fes_subject_dw_id bigint
+fes_grade_dw_id bigint
+fes_tenant_dw_id bigint
+fes_school_dw_id bigint
+fes_lp_dw_id bigint
+fes_instructional_plan_id VARCHAR(36)
+fes_content_package_id VARCHAR(36)
+fes_content_title VARCHAR(100)
+fes_content_type VARCHAR(100)
+fes_start_time TIMESTAMP
+fes_lesson_type VARCHAR(50)
+fes_is_retry boolean
+fes_outside_of_school boolean
+fes_attempt integer
+fes_academic_period_order integer
+fes_academic_year_dw_id bigint
+fes_content_academic_year integer
+fes_lesson_category VARCHAR(100)
+fes_suid VARCHAR(36)
+fes_abbreviation VARCHAR(100)
+fes_activity_type VARCHAR(100)
+fes_activity_component_type VARCHAR(100)
+fes_completion_node boolean
+fes_main_component boolean
+fes_exit_ticket boolean
+fes_ls_id VARCHAR(36)
+exp_uuid VARCHAR(36)
+fes_material_id VARCHAR(36)
+fes_material_type VARCHAR(20)
+fes_open_path_enabled boolean
+}
+
+Table fact_guardian_app_activities {
+fgaa_dw_id bigint
+fgaa_created_time TIMESTAMP
+fgaa_actor_object_type VARCHAR(100)
+fgaa_actor_account_homepage VARCHAR(100)
+fgaa_verb_display VARCHAR(100)
+fgaa_verb_id VARCHAR(100)
+fgaa_object_id VARCHAR(2000)
+fgaa_object_type VARCHAR(100)
+fgaa_object_account_homepage VARCHAR(100)
+fgaa_dw_created_time TIMESTAMP
+fgaa_event_type VARCHAR(100)
+fgaa_date_dw_id bigint
+fgaa_device VARCHAR(100)
+fgaa_tenant_dw_id bigint
+fgaa_guardian_dw_id bigint
+fgaa_student_dw_id bigint
+fgaa_school_dw_id bigint
+fgaa_timestamp_local VARCHAR(600)
+}
+
+Table fact_guardian_joint_activity {
+fgja_dw_id bigint
+fgja_created_time TIMESTAMP
+fgja_dw_created_time TIMESTAMP
+fgja_date_dw_id bigint
+fgja_tenant_dw_id bigint
+fgja_school_dw_id bigint
+fgja_k12_grade integer
+fgja_class_dw_id bigint
+fgja_student_dw_id bigint
+fgja_guardian_dw_id bigint
+fgja_pathway_dw_id bigint
+fgja_pathway_level_dw_id bigint
+fgja_attempt smallint
+fgja_rating smallint
+fgja_state smallint
+fgja_updated_time TIMESTAMP
+fgja_course_dw_id bigint
+fgja_course_activity_container_dw_id bigint
+}
+
+Table fact_inc_game {
+inc_game_dw_id bigint
+inc_game_id VARCHAR(36)
+inc_game_created_time TIMESTAMP
+inc_game_dw_created_time TIMESTAMP
+inc_game_date_dw_id bigint
+inc_game_updated_time TIMESTAMP
+inc_game_dw_updated_time TIMESTAMP
+inc_game_tenant_dw_id bigint
+inc_game_school_dw_id bigint
+inc_game_section_dw_id bigint
+inc_game_lo_dw_id bigint
+inc_game_title VARCHAR(256)
+inc_game_teacher_dw_id bigint
+inc_game_subject_dw_id bigint
+inc_game_grade_dw_id bigint
+inc_game_learning_path_dw_id bigint
+inc_game_num_questions integer
+inc_game_instructional_plan_id VARCHAR(36)
+inc_game_class_dw_id bigint
+inc_game_is_assessment boolean
+inc_game_lesson_component_id VARCHAR(36)
+}
+
+Table fact_inc_game_outcome {
+inc_game_outcome_dw_id bigint
+inc_game_outcome_id VARCHAR(36)
+inc_game_outcome_created_time TIMESTAMP
+inc_game_outcome_dw_created_time TIMESTAMP
+inc_game_outcome_date_dw_id bigint
+inc_game_outcome_tenant_dw_id bigint
+inc_game_outcome_session_id VARCHAR(36)
+inc_game_outcome_game_id VARCHAR(36)
+inc_game_outcome_player_dw_id bigint
+inc_game_outcome_lo_dw_id bigint
+inc_game_outcome_score double
+inc_game_outcome_status integer
+inc_game_outcome_is_assessment boolean
+}
+
+Table fact_inc_game_session {
+inc_game_session_dw_id bigint
+inc_game_session_id VARCHAR(36)
+inc_game_session_start_time TIMESTAMP
+inc_game_session_end_time TIMESTAMP
+inc_game_session_dw_created_time TIMESTAMP
+inc_game_session_date_dw_id bigint
+inc_game_session_time_spent integer
+inc_game_session_tenant_dw_id bigint
+inc_game_session_game_id VARCHAR(36)
+inc_game_session_title VARCHAR(256)
+inc_game_session_num_players integer
+inc_game_session_num_joined_players integer
+inc_game_session_started_by_dw_id bigint
+inc_game_session_status integer
+inc_game_session_is_start boolean
+inc_game_session_is_assessment boolean
+}
+
+Table fact_item_purchase {
+fip_dw_id bigint
+fip_created_time TIMESTAMP
+fip_dw_created_time TIMESTAMP
+fip_date_dw_id bigint
+fip_id VARCHAR(36)
+fip_item_id VARCHAR(36)
+fip_item_dw_id bigint
+fip_item_type VARCHAR(50)
+fip_item_title VARCHAR(50)
+fip_item_description VARCHAR(50)
+fip_transaction_id VARCHAR(36)
+fip_school_id VARCHAR(36)
+fip_school_dw_id bigint
+fip_grade_id VARCHAR(36)
+fip_grade_dw_id bigint
+fip_section_id VARCHAR(36)
+fip_section_dw_id bigint
+fip_academic_year_id VARCHAR(36)
+fip_academic_year_dw_id bigint
+fip_academic_year integer
+fip_student_id VARCHAR(36)
+fip_student_dw_id bigint
+fip_tenant_id VARCHAR(36)
+fip_tenant_dw_id bigint
+fip_redeemed_stars integer
+}
+
+Table fact_item_transaction {
+fit_dw_id bigint
+fit_created_time TIMESTAMP
+fit_dw_created_time TIMESTAMP
+fit_date_dw_id bigint
+fit_id VARCHAR(36)
+fit_available_stars integer
+fit_item_cost integer
+fit_star_balance integer
+fit_item_id VARCHAR(36)
+fit_item_dw_id bigint
+fit_item_type VARCHAR(50)
+fit_student_id VARCHAR(36)
+fit_student_dw_id bigint
+fit_tenant_id VARCHAR(36)
+fit_tenant_dw_id bigint
+fit_school_id VARCHAR(36)
+fit_school_dw_id bigint
+fit_grade_id VARCHAR(36)
+fit_grade_dw_id bigint
+fit_section_id VARCHAR(36)
+fit_section_dw_id bigint
+fit_academic_year_id VARCHAR(36)
+fit_academic_year_dw_id bigint
+fit_academic_year integer
+}
+
+Table fact_jira_issue {
+fji_dw_id bigint
+fji_resolution VARCHAR(100)
+fji_issue_type VARCHAR(100)
+fji_assignee VARCHAR(50)
+fji_reporter VARCHAR(50)
+fji_priority VARCHAR(20)
+fji_status VARCHAR(100)
+fji_original_estimate bigint
+fji_percent_of_spent_time VARCHAR(30)
+fji_labels VARCHAR(255)
+fji_summary VARCHAR(255)
+fji_key VARCHAR(50)
+fji_due_date TIMESTAMP
+fji_date_dw_id bigint
+fji_created_time TIMESTAMP
+fji_dw_created_time TIMESTAMP
+fji_issue_created_on TIMESTAMP
+}
+
+Table fact_ktg {
+ktg_dw_id bigint
+ktg_id VARCHAR(256)
+ktg_created_time TIMESTAMP
+ktg_dw_created_time TIMESTAMP
+ktg_date_dw_id bigint
+ktg_tenant_dw_id bigint
+ktg_student_dw_id bigint
+ktg_subject_dw_id bigint
+ktg_school_dw_id bigint
+ktg_grade_dw_id bigint
+ktg_section_dw_id bigint
+ktg_lo_dw_id bigint
+ktg_academic_year_dw_id bigint
+ktg_num_key_terms smallint
+ktg_kt_collection_id bigint
+ktg_trimester_id VARCHAR(256)
+ktg_trimester_order smallint
+ktg_type VARCHAR(200)
+ktg_question_type VARCHAR(200)
+ktg_min_question smallint
+ktg_max_question smallint
+ktg_question_time_allotted integer
+ktg_instructional_plan_id VARCHAR(36)
+ktg_learning_path_id VARCHAR(36)
+ktg_class_dw_id bigint
+ktg_material_id VARCHAR(36)
+ktg_material_type VARCHAR(20)
+}
+
+Table fact_ktg_session {
+ktg_session_dw_id bigint
+ktg_session_id VARCHAR(256)
+ktg_session_start_time TIMESTAMP
+ktg_session_end_time TIMESTAMP
+ktg_session_dw_created_time TIMESTAMP
+ktg_session_date_dw_id bigint
+ktg_session_question_id VARCHAR(256)
+ktg_session_kt_id VARCHAR(256)
+ktg_session_tenant_dw_id bigint
+ktg_session_student_dw_id bigint
+ktg_session_subject_dw_id bigint
+ktg_session_school_dw_id bigint
+ktg_session_grade_dw_id bigint
+ktg_session_section_dw_id bigint
+ktg_session_lo_dw_id bigint
+ktg_session_academic_year_dw_id bigint
+ktg_session_outside_of_school boolean
+ktg_session_trimester_id VARCHAR(256)
+ktg_session_trimester_order smallint
+ktg_session_type VARCHAR(200)
+ktg_session_question_time_allotted integer
+ktg_session_time_spent integer
+ktg_session_answer VARCHAR(5000)
+ktg_session_num_attempts smallint
+ktg_session_score double
+ktg_session_max_score double
+ktg_session_stars integer
+ktg_session_is_attended boolean
+ktg_session_event_type integer
+ktg_session_is_start boolean
+ktg_session_instructional_plan_id VARCHAR(36)
+ktg_session_learning_path_id VARCHAR(36)
+ktg_session_class_dw_id bigint
+ktg_session_material_id VARCHAR(36)
+ktg_session_material_type VARCHAR(20)
+}
+
+Table fact_ktgskipped {
+ktgskipped_dw_id bigint
+ktgskipped_created_time TIMESTAMP
+ktgskipped_dw_created_time TIMESTAMP
+ktgskipped_date_dw_id bigint
+ktgskipped_tenant_dw_id bigint
+ktgskipped_student_dw_id bigint
+ktgskipped_subject_dw_id bigint
+ktgskipped_school_dw_id bigint
+ktgskipped_grade_dw_id bigint
+ktgskipped_section_dw_id bigint
+ktgskipped_lo_dw_id bigint
+ktgskipped_academic_year_dw_id bigint
+ktgskipped_num_key_terms smallint
+ktgskipped_kt_collection_id bigint
+ktgskipped_trimester_id VARCHAR(256)
+ktgskipped_trimester_order smallint
+ktgskipped_min_question smallint
+ktgskipped_max_question smallint
+ktgskipped_type VARCHAR(200)
+ktgskipped_question_type VARCHAR(1000)
+ktgskipped_question_time_allotted integer
+ktgskipped_instructional_plan_id VARCHAR(36)
+ktgskipped_learning_path_id VARCHAR(36)
+ktgskipped_class_dw_id bigint
+ktgskipped_material_id VARCHAR(36)
+ktgskipped_material_type VARCHAR(20)
+}
+
+Table fact_learning_experience {
+fle_dw_id bigint
+fle_created_time TIMESTAMP
+fle_dw_created_time TIMESTAMP
+fle_date_dw_id bigint
+fle_exp_id VARCHAR(36)
+fle_ls_id VARCHAR(36)
+fle_content_id VARCHAR(36)
+fle_lo_dw_id bigint
+fle_student_dw_id bigint
+fle_subject_dw_id bigint
+fle_grade_dw_id bigint
+fle_curr_subject_dw_id bigint
+fle_curr_grade_dw_id bigint
+fle_term_dw_id bigint
+fle_tenant_dw_id bigint
+fle_school_dw_id bigint
+fle_section_dw_id bigint
+fle_lp_dw_id bigint
+fle_start_time TIMESTAMP
+fle_end_time TIMESTAMP
+fle_total_time double
+fle_score integer
+fle_star_earned integer
+fle_lesson_type VARCHAR(50)
+fle_is_retry boolean
+fle_outside_of_school boolean
+fle_attempt integer
+fle_exp_ls_flag boolean
+fle_academic_period_order VARCHAR(20)
+fle_academic_year_dw_id bigint
+fle_content_academic_year VARCHAR(20)
+fle_time_spent_app integer
+fle_instructional_plan_id VARCHAR(36)
+fle_class_dw_id bigint
+fle_lesson_category VARCHAR(40)
+fle_adt_level VARCHAR(20)
+fle_step_id VARCHAR(36)
+fle_abbreviation VARCHAR(100)
+fle_activity_template_id VARCHAR(100)
+fle_activity_type VARCHAR(100)
+fle_activity_component_type VARCHAR(100)
+fle_exit_ticket boolean
+fle_main_component boolean
+fle_completion_node boolean
+fle_total_score numeric(104)
+fle_is_activity_completed boolean
+fle_material_id VARCHAR(36)
+fle_material_type VARCHAR(20)
+fle_state smallint
+fle_total_stars smallint
+fle_open_path_enabled boolean
+fle_source VARCHAR(10)
+fle_teaching_period_id VARCHAR(36)
+fle_academic_year VARCHAR(10)
+fle_assessment_id VARCHAR(36)
+fle_is_gamified boolean
+fle_is_additional_resource boolean
+fle_bonus_stars integer
+fle_bonus_stars_scheme VARCHAR(40)
+}
+
+Table fact_learning_score_breakdown {
+fle_scbd_dw_id bigint
+fle_scbd_created_time TIMESTAMP
+fle_scbd_dw_created_time TIMESTAMP
+fle_scbd_date_dw_id bigint
+fle_scbd_fle_dw_id bigint
+fle_scbd_fle_exp_id VARCHAR(36)
+fle_scbd_fle_ls_id VARCHAR(36)
+fle_scbd_question_dw_id bigint
+fle_scbd_code VARCHAR(128)
+fle_scbd_time_spent double
+fle_scbd_hints_used boolean
+fle_scbd_max_score double
+fle_scbd_score double
+fle_scbd_lo_dw_id bigint
+fle_scbd_type VARCHAR(250)
+fle_scbd_version integer
+fle_scbd_is_attended boolean
+}
+
+Table fact_lesson_feedback {
+lesson_feedback_staging_id bigint
+lesson_feedback_id VARCHAR(36)
+lesson_feedback_created_time TIMESTAMP
+lesson_feedback_dw_created_time TIMESTAMP
+lesson_feedback_date_dw_id bigint
+lesson_feedback_tenant_dw_id bigint
+lesson_feedback_school_dw_id bigint
+lesson_feedback_academic_year_dw_id bigint
+lesson_feedback_grade_dw_id bigint
+lesson_feedback_section_dw_id bigint
+lesson_feedback_subject_dw_id bigint
+lesson_feedback_student_dw_id bigint
+lesson_feedback_lo_dw_id bigint
+lesson_feedback_term_dw_id bigint
+lesson_feedback_curr_grade_dw_id bigint
+lesson_feedback_curr_subject_dw_id bigint
+lesson_feedback_fle_ls_dw_id bigint
+lesson_feedback_trimester_id VARCHAR(36)
+lesson_feedback_trimester_order integer
+lesson_feedback_content_academic_year integer
+lesson_feedback_rating VARCHAR(50)
+lesson_feedback_rating_text VARCHAR(50)
+lesson_feedback_has_comment boolean
+lesson_feedback_is_cancelled boolean
+lesson_feedback_instructional_plan_id VARCHAR(36)
+lesson_feedback_learning_path_id VARCHAR(36)
+lesson_feedback_class_dw_id bigint
+lesson_feedback_fle_ls_uuid VARCHAR(36)
+lesson_feedback_teaching_period_id VARCHAR(36)
+lesson_feedback_teaching_period_title VARCHAR(50)
+}
+
+Table fact_level_completed {
+flc_dw_id bigint
+flc_created_time TIMESTAMP
+flc_dw_created_time TIMESTAMP
+flc_date_dw_id bigint
+flc_completed_on TIMESTAMP
+flc_tenant_dw_id bigint
+flc_student_dw_id bigint
+flc_class_dw_id bigint
+flc_pathway_dw_id bigint
+flc_level_dw_id bigint
+flc_total_stars integer
+flc_course_dw_id bigint
+flc_course_activity_container_dw_id bigint
+flc_academic_year VARCHAR(50)
+flc_score integer
+}
+
+Table fact_levels_recommended {
+flr_dw_id bigint
+flr_created_time TIMESTAMP
+flr_dw_created_time TIMESTAMP
+flr_date_dw_id bigint
+flr_recommended_on TIMESTAMP
+flr_tenant_dw_id bigint
+flr_student_dw_id bigint
+flr_class_dw_id bigint
+flr_pathway_dw_id bigint
+flr_completed_level_dw_id bigint
+flr_level_dw_id bigint
+flr_status integer
+flr_recommendation_type integer
+flr_course_dw_id bigint
+flr_course_activity_container_dw_id bigint
+flr_completed_course_activity_container_dw_id bigint
+flr_academic_year VARCHAR(50)
+}
+
+Table fact_pathway_activity_completed {
+fpac_dw_id bigint
+fpac_created_time TIMESTAMP
+fpac_dw_created_time TIMESTAMP
+fpac_date_dw_id bigint
+fpac_tenant_dw_id bigint
+fpac_student_dw_id bigint
+fpac_class_dw_id bigint
+fpac_pathway_dw_id bigint
+fpac_level_dw_id bigint
+fpac_activity_dw_id bigint
+fpac_activity_type integer
+fpac_score double
+fpac_time_spent integer
+fpac_learning_session_id VARCHAR(36)
+fpac_attempt integer
+fpac_course_dw_id bigint
+fpac_course_activity_container_dw_id bigint
+fpac_academic_year VARCHAR(50)
+}
+
+Table fact_pathway_leaderboard {
+fpl_dw_id bigint
+fpl_created_time TIMESTAMP
+fpl_dw_created_time TIMESTAMP
+fpl_date_dw_id bigint
+fpl_id VARCHAR(36)
+fpl_student_dw_id bigint
+fpl_pathway_dw_id bigint
+fpl_class_dw_id bigint
+fpl_grade_dw_id bigint
+fpl_academic_year_dw_id bigint
+fpl_start_date date
+fpl_end_date date
+fpl_order smallint
+fpl_level_competed_count smallint
+fpl_average_score double
+fpl_total_stars smallint
+fpl_tenant_dw_id bigint
+fpl_course_dw_id bigint
+}
+
+Table fact_pathway_learning_progress {
+dw_id bigint
+_trace_id VARCHAR(36)
+event_type VARCHAR(100)
+created_time TIMESTAMP
+dw_created_time TIMESTAMP
+date_dw_id bigint
+experience_id VARCHAR(36)
+learning_session_id VARCHAR(36)
+content_id VARCHAR(36)
+learning_objective_dw_id bigint
+student_dw_id bigint
+subject_dw_id bigint
+student_grade_dw_id bigint
+curriculum_subject_dw_id bigint
+curriculum_grade_dw_id bigint
+term_dw_id bigint
+tenant_dw_id bigint
+school_dw_id bigint
+student_section_dw_id bigint
+learning_path_dw_id bigint
+start_time TIMESTAMP
+end_time TIMESTAMP
+total_time double
+score integer
+stars integer
+lesson_type VARCHAR(50)
+retry boolean
+outside_of_school boolean
+attempt integer
+learning_experience_flag boolean
+trimester_order VARCHAR(20)
+academic_year_dw_id bigint
+content_academic_year VARCHAR(20)
+time_spent integer
+instructional_plan_id VARCHAR(36)
+class_dw_id bigint
+lesson_category VARCHAR(40)
+level VARCHAR(20)
+abbreviation VARCHAR(100)
+activity_template_id VARCHAR(100)
+activity_type VARCHAR(100)
+activity_component_type VARCHAR(100)
+exit_ticket boolean
+main_component boolean
+completion_node boolean
+total_score numeric(104)
+activity_completed boolean
+material_id VARCHAR(36)
+material_type VARCHAR(20)
+state smallint
+total_stars smallint
+open_path_enabled boolean
+source VARCHAR(10)
+teaching_period_id VARCHAR(36)
+academic_year VARCHAR(10)
+assessment_id VARCHAR(36)
+bonus_stars integer
+bonus_stars_scheme VARCHAR(40)
+}
+
+Table fact_pathway_placement {
+fpp_dw_id bigint
+fpp_created_time TIMESTAMP
+fpp_dw_created_time TIMESTAMP
+fpp_date_dw_id bigint
+fpp_previous_pathway_domain VARCHAR(100)
+fpp_pathway_id VARCHAR(36)
+fpp_pathway_dw_id bigint
+fpp_new_pathway_domain VARCHAR(100)
+fpp_new_pathway_grade integer
+fpp_class_id VARCHAR(36)
+fpp_class_dw_id bigint
+fpp_student_id VARCHAR(36)
+fpp_student_dw_id bigint
+fpp_previous_pathway_grade integer
+fpp_tenant_id VARCHAR(36)
+fpp_tenant_dw_id bigint
+fpp_placement_type integer
+fpp_overall_grade integer
+fpp_created_by VARCHAR(36)
+fpp_created_by_dw_id bigint
+fpp_course_dw_id bigint
+fpp_is_initial boolean
+fpp_has_accelerated_domains boolean
+}
+
+Table fact_pathway_target_progress {
+fptp_dw_id bigint
+fptp_id VARCHAR(36)
+fptp_created_time TIMESTAMP
+fptp_dw_created_time TIMESTAMP
+fptp_date_dw_id bigint
+fptp_student_target_id VARCHAR(36)
+fptp_target_id VARCHAR(36)
+fptp_target_dw_id bigint
+fptp_student_id VARCHAR(36)
+fptp_student_dw_id bigint
+fptp_tenant_id VARCHAR(36)
+fptp_tenant_dw_id bigint
+fptp_school_id VARCHAR(36)
+fptp_school_dw_id bigint
+fptp_grade_id VARCHAR(36)
+fptp_grade_dw_id bigint
+fptp_class_id VARCHAR(36)
+fptp_class_dw_id bigint
+fptp_teacher_id VARCHAR(36)
+fptp_teacher_dw_id bigint
+fptp_pathway_id VARCHAR(36)
+fptp_pathway_dw_id bigint
+fptp_target_state VARCHAR(20)
+fptp_recommended_target_level integer
+fptp_finalized_target_level integer
+fptp_levels_completed integer
+fptp_earned_stars integer
+}
+
+Table fact_pathway_teacher_activity {
+fpta_dw_id bigint
+fpta_created_time TIMESTAMP
+fpta_dw_created_time TIMESTAMP
+fpta_date_dw_id bigint
+fpta_student_id VARCHAR(36)
+fpta_level_id VARCHAR(36)
+fpta_pathway_id VARCHAR(36)
+fpta_tenant_id VARCHAR(36)
+fpta_action_name VARCHAR(255)
+fpta_class_id VARCHAR(36)
+fpta_teacher_id VARCHAR(36)
+fpta_activity_id VARCHAR(36)
+fpta_action_time TIMESTAMP
+fpta_tenant_dw_id bigint
+fpta_student_dw_id bigint
+fpta_level_dw_id bigint
+fpta_pathway_dw_id bigint
+fpta_class_dw_id bigint
+fpta_teacher_dw_id bigint
+fpta_activity_dw_id bigint
+fpta_activity_type integer
+fpta_start_date date
+fpta_end_date date
+fpta_course_dw_id bigint
+fpta_course_activity_container_dw_id bigint
+fpta_activity_progress_status VARCHAR(30)
+fpta_activity_type_value VARCHAR(50)
+fpta_is_added_as_resource boolean
+}
+
+Table fact_practice {
+practice_dw_id bigint
+practice_created_time TIMESTAMP
+practice_dw_created_time TIMESTAMP
+practice_date_dw_id integer
+practice_id VARCHAR(36)
+practice_lo_dw_id bigint
+practice_student_dw_id bigint
+practice_subject_dw_id bigint
+practice_grade_dw_id bigint
+practice_tenant_dw_id bigint
+practice_school_dw_id bigint
+practice_section_dw_id bigint
+practice_skill_dw_id bigint
+practice_sa_score numeric(104)
+practice_item_lo_dw_id bigint
+practice_item_skill_dw_id bigint
+practice_item_content_id VARCHAR(36)
+practice_item_content_title VARCHAR(100)
+practice_item_content_lesson_type VARCHAR(50)
+practice_item_content_location VARCHAR(200)
+practice_academic_year_dw_id bigint
+practice_instructional_plan_id VARCHAR(36)
+practice_learning_path_id VARCHAR(36)
+practice_class_dw_id bigint
+practice_item_step_id VARCHAR(36)
+practice_material_id VARCHAR(36)
+practice_material_type VARCHAR(20)
+}
+
+Table fact_practice_session {
+practice_session_dw_id bigint
+practice_session_start_time TIMESTAMP
+practice_session_end_time TIMESTAMP
+practice_session_dw_created_time TIMESTAMP
+practice_session_date_dw_id integer
+practice_session_id VARCHAR(36)
+practice_session_lo_dw_id bigint
+practice_session_student_dw_id bigint
+practice_session_subject_dw_id bigint
+practice_session_grade_dw_id bigint
+practice_session_tenant_dw_id bigint
+practice_session_school_dw_id bigint
+practice_session_section_dw_id bigint
+practice_session_sa_score numeric(104)
+practice_session_item_lo_dw_id bigint
+practice_session_item_content_uuid VARCHAR(36)
+practice_session_item_content_title VARCHAR(100)
+practice_session_item_content_lesson_type VARCHAR(50)
+practice_session_item_content_location VARCHAR(200)
+practice_session_time_spent bigint
+practice_session_score numeric(104)
+practice_session_event_type integer
+practice_session_is_start boolean
+practice_session_outside_of_school boolean
+practice_session_stars integer
+practice_academic_year_dw_id bigint
+practice_session_instructional_plan_id VARCHAR(36)
+practice_session_learning_path_id VARCHAR(36)
+practice_session_class_dw_id bigint
+practice_session_item_step_id VARCHAR(36)
+practice_session_material_id VARCHAR(36)
+practice_session_material_type VARCHAR(20)
+}
+
+Table fact_service_desk {
+service_desk_data super
+}
+
+Table fact_service_desk_request {
+fsdr_dw_id bigint
+fsdr_dw_created_time TIMESTAMP
+fsdr_created_time TIMESTAMP
+fsdr_completed_time TIMESTAMP
+fsdr_category_name VARCHAR(50)
+fsdr_sub_category VARCHAR(600)
+fsdr_subject VARCHAR(800)
+fsdr_request_status VARCHAR(30)
+fsdr_request_type VARCHAR(30)
+fsdr_request_id bigint
+fsdr_item_name VARCHAR(300)
+fsdr_site_name VARCHAR(100)
+fsdr_group_name VARCHAR(50)
+fsdr_technician_name VARCHAR(50)
+fsdr_template_name VARCHAR(100)
+fsdr_closure_code_name VARCHAR(500)
+fsdr_impact_name VARCHAR(50)
+fsdr_resolved_time TIMESTAMP
+fsdr_assigned_time TIMESTAMP
+fsdr_impact_details_name VARCHAR(50)
+fsdr_linked_request_id bigint
+fsdr_organization_name VARCHAR(30)
+fsdr_is_escalated boolean
+fsdr_priority_name VARCHAR(50)
+fsdr_request_display_id bigint
+fsdr_request_mode_name VARCHAR(50)
+fsdr_requester_job_title VARCHAR(200)
+fsdr_date_dw_id bigint
+fsdr_sla_name VARCHAR(500)
+}
+
+Table fact_skill_content_unavailable {
+scu_dw_id bigint
+scu_created_time TIMESTAMP
+scu_dw_created_time TIMESTAMP
+scu_date_dw_id bigint
+scu_tenant_dw_id bigint
+scu_lo_dw_id bigint
+scu_skill_dw_id bigint
+}
+
+Table fact_star_awarded {
+fsa_dw_id bigint
+fsa_created_time TIMESTAMP
+fsa_dw_created_time TIMESTAMP
+fsa_date_dw_id bigint
+fsa_id VARCHAR(36)
+fsa_award_category_dw_id bigint
+fsa_student_dw_id bigint
+fsa_tenant_dw_id bigint
+fsa_school_dw_id bigint
+fsa_subject_dw_id bigint
+fsa_teacher_dw_id bigint
+fsa_grade_dw_id bigint
+fsa_award_comments boolean
+fsa_academic_year_dw_id bigint
+fsa_class_dw_id bigint
+fsa_stars integer
+}
+
+Table fact_student_activities {
+fsta_dw_id bigint
+fsta_created_time TIMESTAMP
+fsta_dw_created_time TIMESTAMP
+fsta_actor_object_type VARCHAR(100)
+fsta_actor_account_homepage VARCHAR(100)
+fsta_verb_display VARCHAR(100)
+fsta_verb_id VARCHAR(100)
+fsta_object_id VARCHAR(2000)
+fsta_object_type VARCHAR(100)
+fsta_object_definition_type VARCHAR(100)
+fsta_object_definition_name VARCHAR(2000)
+fsta_from_time numeric(50)
+fsta_to_time numeric(50)
+fsta_outside_of_school boolean
+fsta_event_type VARCHAR(100)
+fsta_prev_event_type VARCHAR(100)
+fsta_next_event_type VARCHAR(100)
+fsta_date_dw_id bigint
+fsta_attempt smallint
+fsta_score_scaled numeric(62)
+fsta_score_max numeric(62)
+fsta_score_min numeric(62)
+fsta_lesson_position smallint
+fsta_exp_id VARCHAR(36)
+fsta_ls_id VARCHAR(36)
+fsta_tenant_dw_id bigint
+fsta_school_dw_id bigint
+fsta_grade_dw_id bigint
+fsta_section_dw_id bigint
+fsta_subject_dw_id bigint
+fsta_student_dw_id bigint
+fsta_academic_year_dw_id bigint
+fsta_timestamp_local VARCHAR(600)
+fsta_start_time TIMESTAMP
+fsta_end_time TIMESTAMP
+fsta_time_spent double
+fsta_score_raw numeric(72)
+fsta_is_completion_node boolean
+fsta_is_flexible_lesson boolean
+fsta_academic_calendar_id VARCHAR(36)
+fsta_teaching_period_id VARCHAR(36)
+fsta_teaching_period_title VARCHAR(50)
+}
+
+Table fact_student_certificate_awarded {
+fsca_dw_id bigint
+fsca_created_time TIMESTAMP
+fsca_dw_created_time TIMESTAMP
+fsca_date_dw_id bigint
+fsca_certificate_id VARCHAR(36)
+fsca_student_dw_id bigint
+fsca_award_category VARCHAR(50)
+fsca_award_purpose VARCHAR(500)
+fsca_academic_year_dw_id bigint
+fsca_class_dw_id bigint
+fsca_grade_dw_id bigint
+fsca_teacher_dw_id bigint
+fsca_language VARCHAR(36)
+fsca_tenant_dw_id bigint
+}
+
+Table fact_student_queries {
+dw_id bigint
+created_time TIMESTAMP
+dw_created_time TIMESTAMP
+date_dw_id bigint
+_trace_id VARCHAR(36)
+event_type VARCHAR(36)
+message_id VARCHAR(36)
+query_id VARCHAR(36)
+tenant_id VARCHAR(36)
+tenant_dw_id bigint
+school_id VARCHAR(36)
+school_dw_id bigint
+grade_id VARCHAR(36)
+grade_dw_id bigint
+class_id VARCHAR(36)
+class_dw_id bigint
+section_id VARCHAR(36)
+section_dw_id bigint
+teacher_id VARCHAR(36)
+teacher_dw_id bigint
+academic_year_id VARCHAR(36)
+academic_year_dw_id bigint
+student_id VARCHAR(36)
+student_dw_id bigint
+activity_id VARCHAR(36)
+activity_dw_id bigint
+activity_type VARCHAR(100)
+can_student_reply boolean
+with_audio boolean
+with_text boolean
+material_type VARCHAR(100)
+gen_subject VARCHAR(100)
+lang_code VARCHAR(100)
+is_follow_up boolean
+has_screenshot boolean
+}
+
+Table fact_teacher_activities {
+fta_dw_id bigint
+fta_created_time TIMESTAMP
+fta_dw_created_time TIMESTAMP
+fta_actor_object_type VARCHAR(100)
+fta_actor_account_homepage VARCHAR(100)
+fta_verb_id VARCHAR(100)
+fta_verb_display VARCHAR(100)
+fta_object_id VARCHAR(2000)
+fta_object_type VARCHAR(100)
+fta_object_definition_type VARCHAR(100)
+fta_object_definition_name VARCHAR(2000)
+fta_context_category VARCHAR(100)
+fta_outside_of_school boolean
+fta_event_type VARCHAR(100)
+fta_prev_event_type VARCHAR(100)
+fta_next_event_type VARCHAR(100)
+fta_date_dw_id bigint
+fta_tenant_dw_id bigint
+fta_school_dw_id bigint
+fta_grade_dw_id bigint
+fta_section_dw_id bigint
+fta_subject_dw_id bigint
+fta_teacher_dw_id bigint
+fta_start_time TIMESTAMP
+fta_end_time TIMESTAMP
+fta_timestamp_local VARCHAR(600)
+fta_time_spent double
+}
+
+Table fact_teacher_task_center {
+dw_id bigint
+created_time TIMESTAMP
+dw_created_time TIMESTAMP
+date_dw_id bigint
+_trace_id VARCHAR(36)
+event_type VARCHAR(36)
+event_id VARCHAR(36)
+task_id VARCHAR(36)
+task_type VARCHAR(36)
+tenant_id VARCHAR(36)
+tenant_dw_id bigint
+school_id VARCHAR(36)
+school_dw_id bigint
+class_id VARCHAR(36)
+class_dw_id bigint
+teacher_id VARCHAR(36)
+teacher_dw_id bigint
+}
+
+Table fact_teacher_test_candidate_progress {
+fttcp_dw_id bigint
+fttcp_session_id VARCHAR(36)
+fttcp_candidate_id VARCHAR(36)
+fttcp_test_delivery_id VARCHAR(36)
+fttcp_assessment_id VARCHAR(36)
+fttcp_score double
+fttcp_stars_awarded integer
+fttcp_status VARCHAR(50)
+fttcp_updated_at TIMESTAMP
+fttcp_created_at TIMESTAMP
+fttcp_date_dw_id bigint
+fttcp_created_time TIMESTAMP
+fttcp_dw_created_time TIMESTAMP
+fttcp_test_delivery_dw_id bigint
+fttcp_candidate_dw_id bigint
+}
+
+Table fact_tutor_analogous {
+fta_dw_id bigint
+fta_created_time TIMESTAMP
+fta_dw_created_time TIMESTAMP
+fta_date_dw_id bigint
+fta_user_id VARCHAR(36)
+fta_user_dw_id bigint
+fta_tenant_id VARCHAR(36)
+fta_message_id VARCHAR(36)
+fta_session_id VARCHAR(36)
+fta_conversation_id VARCHAR(36)
+}
+
+Table fact_tutor_challenge_question_answer {
+ftcqa_bot_question_timestamp TIMESTAMP
+ftcqa_bot_question_source VARCHAR(10)
+ftcqa_bot_question_id VARCHAR(36)
+ftcqa_bot_question_tokens integer
+ftcqa_conversation_id VARCHAR(36)
+ftcqa_session_id VARCHAR(36)
+ftcqa_message_id VARCHAR(36)
+ftcqa_user_id VARCHAR(36)
+ftcqa_user_dw_id bigint
+ftcqa_tenant_id VARCHAR(36)
+ftcqa_date_dw_id bigint
+ftcqa_created_time TIMESTAMP
+ftcqa_dw_created_time TIMESTAMP
+ftcqa_is_answer_evaluated boolean
+ftcqa_dw_id bigint
+ftcqa_user_attempt_tokens integer
+ftcqa_user_attempt_number integer
+ftcqa_user_remaining_attempts integer
+ftcqa_user_attempt_timestamp TIMESTAMP
+ftcqa_user_attempt_is_correct boolean
+ftcqa_user_attempt_source VARCHAR(20)
+ftcqa_user_attempt_id VARCHAR(36)
+}
+
+Table fact_tutor_conversation {
+ftc_dw_id bigint
+ftc_created_time TIMESTAMP
+ftc_dw_created_time TIMESTAMP
+ftc_date_dw_id bigint
+ftc_tenant_dw_id bigint
+ftc_school_dw_id bigint
+ftc_user_dw_id bigint
+ftc_role VARCHAR(20)
+ftc_grade integer
+ftc_grade_dw_id bigint
+ftc_context_id VARCHAR(36)
+ftc_session_id VARCHAR(36)
+ftc_subject_dw_id bigint
+ftc_subject VARCHAR(20)
+ftc_language VARCHAR(20)
+ftc_activity_dw_id bigint
+ftc_activity_status VARCHAR(20)
+ftc_material_id VARCHAR(36)
+ftc_material_type VARCHAR(20)
+ftc_level_dw_id bigint
+ftc_outcome_dw_id bigint
+ftc_conversation_max_tokens integer
+ftc_conversation_token_count integer
+ftc_system_prompt_tokens integer
+ftc_message_language VARCHAR(30)
+ftc_user_message_source VARCHAR(30)
+ftc_user_message_tokens integer
+ftc_user_message_timestamp TIMESTAMP
+ftc_bot_message_source VARCHAR(30)
+ftc_bot_message_tokens integer
+ftc_bot_message_timestamp TIMESTAMP
+ftc_bot_message_confidence double
+ftc_bot_message_response_time double
+ftc_session_state integer
+ftc_message_feedback VARCHAR(10)
+ftc_message_id VARCHAR(36)
+ftc_conversation_id VARCHAR(36)
+ftc_suggestions_prompt_tokens VARCHAR(256)
+ftc_message_tokens VARCHAR(256)
+ftc_activity_page_context_id VARCHAR(256)
+ftc_student_location VARCHAR(256)
+ftc_suggestion_clicked boolean
+ftc_clicked_suggestion_id VARCHAR(36)
+ftc_course_activity_container_dw_id bigint
+}
+
+Table fact_tutor_onboarding {
+fto_dw_id bigint
+fto_created_time TIMESTAMP
+fto_dw_created_time TIMESTAMP
+fto_date_dw_id bigint
+fto_user_id VARCHAR(36)
+fto_user_dw_id bigint
+fto_tenant_id VARCHAR(36)
+fto_question_id VARCHAR(36)
+fto_question_category VARCHAR(50)
+fto_user_free_text_response boolean
+fto_onboarding_complete boolean
+fto_onboarding_skipped boolean
+}
+
+Table fact_tutor_session {
+fts_dw_id bigint
+fts_created_time TIMESTAMP
+fts_dw_created_time TIMESTAMP
+fts_date_dw_id bigint
+fts_session_id VARCHAR(36)
+fts_tenant_dw_id bigint
+fts_school_dw_id bigint
+fts_user_dw_id bigint
+fts_grade_dw_id bigint
+fts_context_id VARCHAR(36)
+fts_role VARCHAR(20)
+fts_grade integer
+fts_subject_dw_id bigint
+fts_subject VARCHAR(20)
+fts_language VARCHAR(20)
+fts_session_state VARCHAR(20)
+fts_activity_dw_id bigint
+fts_activity_status VARCHAR(20)
+fts_material_id VARCHAR(36)
+fts_material_type VARCHAR(20)
+fts_level_dw_id bigint
+fts_outcome_dw_id bigint
+fts_session_message_limit_reached boolean
+fts_course_activity_container_dw_id bigint
+fts_learning_session_id VARCHAR(36)
+}
+
+Table fact_tutor_simplification {
+fts_dw_id bigint
+fts_created_time TIMESTAMP
+fts_dw_created_time TIMESTAMP
+fts_date_dw_id bigint
+fts_user_id VARCHAR(36)
+fts_user_dw_id bigint
+fts_tenant_id VARCHAR(36)
+fts_message_id VARCHAR(36)
+fts_session_id VARCHAR(36)
+fts_conversation_id VARCHAR(36)
+}
+
+Table fact_tutor_suggestions {
+fts_dw_id bigint
+fts_message_id VARCHAR(36)
+fts_suggestion_id VARCHAR(36)
+fts_created_time TIMESTAMP
+fts_dw_created_time TIMESTAMP
+fts_user_id VARCHAR(36)
+fts_user_dw_id bigint
+fts_session_id VARCHAR(36)
+fts_conversation_id VARCHAR(36)
+fts_response_time double
+fts_success_parser_tokens integer
+fts_failure_parser_tokens integer
+fts_suggestion_clicked boolean
+fts_date_dw_id bigint
+fts_tenant_dw_id bigint
+fts_tenant_id VARCHAR(36)
+}
+
+Table fact_tutor_translation {
+ftt_dw_id bigint
+ftt_created_time TIMESTAMP
+ftt_dw_created_time TIMESTAMP
+ftt_date_dw_id bigint
+ftt_user_id VARCHAR(36)
+ftt_user_dw_id bigint
+ftt_tenant_id VARCHAR(36)
+ftt_message_id VARCHAR(36)
+ftt_session_id VARCHAR(36)
+ftt_conversation_id VARCHAR(36)
+ftt_translation_language VARCHAR(50)
+}
+
+Table fact_tutor_user_context {
+ftc_dw_id bigint
+ftc_created_time TIMESTAMP
+ftc_dw_created_time TIMESTAMP
+ftc_date_dw_id bigint
+ftc_tenant_dw_id bigint
+ftc_user_dw_id bigint
+ftc_role VARCHAR(20)
+ftc_context_id VARCHAR(36)
+ftc_school_dw_id bigint
+ftc_grade_dw_id bigint
+ftc_grade bigint
+ftc_subject_dw_id bigint
+ftc_subject VARCHAR(20)
+ftc_language VARCHAR(20)
+ftc_tutor_locked boolean
+}
+
+Table fact_user_avatar {
+fua_dw_id bigint
+fua_created_time TIMESTAMP
+fua_dw_created_time TIMESTAMP
+fua_date_dw_id bigint
+fua_id VARCHAR(255)
+fua_user_id VARCHAR(36)
+fua_user_dw_id bigint
+fua_tenant_id VARCHAR(36)
+fua_tenant_dw_id bigint
+fua_school_id VARCHAR(36)
+fua_school_dw_id bigint
+fua_grade_id VARCHAR(36)
+fua_grade_dw_id bigint
+fua_avatar_file_id VARCHAR(36)
+fua_avatar_type VARCHAR(36)
+fua_avatar_dw_id bigint
+}
+
+Table fact_user_heartbeat_hourly_aggregated {
+fuhha_dw_id bigint
+fuhha_created_time TIMESTAMP
+fuhha_dw_created_time TIMESTAMP
+fuhha_date_dw_id bigint
+fuhha_user_dw_id bigint
+fuhha_role_dw_id bigint
+fuhha_school_dw_id bigint
+fuhha_content_repository_dw_id bigint
+fuhha_channel VARCHAR(36)
+fuhha_activity_date_hour TIMESTAMP
+fuhha_tenant_dw_id bigint
+fuhha_dw_updated_time TIMESTAMP
+}
+
+Table fact_user_login {
+ful_dw_id bigint
+ful_created_time TIMESTAMP
+ful_dw_created_time TIMESTAMP
+ful_date_dw_id bigint
+ful_id VARCHAR(36)
+ful_user_dw_id bigint
+ful_role_dw_id bigint
+ful_tenant_dw_id bigint
+ful_school_dw_id bigint
+ful_outside_of_school boolean
+ful_login_time TIMESTAMP
+}
+
+Table fact_weekly_goal {
+fwg_dw_id bigint
+fwg_created_time TIMESTAMP
+fwg_dw_created_time TIMESTAMP
+fwg_id VARCHAR(36)
+fwg_action_status integer
+fwg_type_dw_id bigint
+fwg_student_dw_id bigint
+fwg_tenant_dw_id bigint
+fwg_class_dw_id bigint
+fwg_star_earned integer
+fwg_date_dw_id bigint
+}
+
+Table fact_weekly_goal_activity {
+fwga_dw_id bigint
+fwga_created_time TIMESTAMP
+fwga_dw_created_time TIMESTAMP
+fwga_weekly_goal_id VARCHAR(36)
+fwga_completed_activity_id VARCHAR(36)
+fwga_weekly_goal_status integer
+fwga_date_dw_id bigint
+}
+
+Table flyway_backfill_history {
+installed_rank integer pk
+version VARCHAR(50)
+description VARCHAR(200)
+type VARCHAR(20)
+script VARCHAR(1000)
+checksum integer
+installed_by VARCHAR(100)
+installed_on TIMESTAMP
+execution_time integer
+success boolean
+}
+
+Table flyway_schema_history {
+installed_rank integer pk
+version VARCHAR(50)
+description VARCHAR(200)
+type VARCHAR(20)
+script VARCHAR(1000)
+checksum integer
+installed_by VARCHAR(100)
+installed_on TIMESTAMP
+execution_time integer
+success boolean
+}
+
+Table fact_adaptive_practice_progress {
+    dw_id  bigint
+    event_type VARCHAR(100)
+    _trace_id VARCHAR(36)
+    tenant_id VARCHAR(36)
+    tenant_dw_id bigint
+    date_dw_id bigint
+    uuid VARCHAR(36)
+    created_time TIMESTAMP
+    dw_created_time TIMESTAMP
+    student_id VARCHAR(36)
+    student_dw_id bigint
+    class_id VARCHAR(36)
+    class_dw_id bigint
+    school_id VARCHAR(36)
+    school_dw_id bigint
+    pathway_id VARCHAR(36)
+    pathway_dw_id bigint
+    level_id VARCHAR(36)
+    level_dw_id bigint
+    academic_year_tag VARCHAR(40)
+    session_id VARCHAR(36)
+    ml_session_id VARCHAR(36)
+    level_proficiency_score integer
+    level_proficiency_tier Varchar(50)
+    assessment_id VARCHAR(36)
+    session_attempt integer
+    stars integer
+    time_spent integer
+    question_id VARCHAR(36)
+    question_skill_id VARCHAR(36)
+    question_skill_dw_id bigint
+    question_difficulty_label VARCHAR(30)
+    skill_proficiency_tier VARCHAR(40)
+    skill_proficiency_score integer
+    answer_score integer
+    time_spent_on_question integer
+    hint_used boolean
+    is_answer_correct boolean
+    next_question_id VARCHAR(36)
+    attempt_number integer
+    next_question_skill_id VARCHAR(36)
+    next_question_skill_dw_id bigint
+    next_question_difficulty_label VARCHAR(30)
+}
+
+Ref: fact_adaptive_practice_progress.question_skill_id > dim_learning_objective.lo_id
+Ref: fact_adaptive_practice_progress.next_question_skill_id > dim_learning_objective.lo_id
+Ref: fact_adaptive_practice_progress.tenant_id > dim_tenant.tenant_id
+Ref: fact_adaptive_practice_progress.school_id > dim_school.school_id
+
+Ref: dim_class.class_category_id > dim_class_category.class_category_id
+Ref: dim_class_schedule.class_schedule_class_id > dim_class.class_id
+Ref: dim_class_user.class_user_class_dw_id > dim_class.class_dw_id
+
+Ref: dim_school_academic_year_association.saya_school_id > dim_school.school_id
+Ref: dim_school_content_repository_association.scra_school_id > dim_school.school_id
+Ref: dim_section_schedule.section_id > dim_section.section_id
+
+
+Ref: dim_academic_calendar_teaching_period.actp_academic_calendar_id > dim_academic_calendar.academic_calendar_id
+Ref: dim_academic_calendar.academic_calendar_academic_year_id > dim_academic_year.academic_year_id
+
+Ref: dim_staff_user_school_role_association.susra_role_uuid > dim_role.role_id
+Ref: dim_staff_user_school_role_association.susra_staff_id > dim_staff_user.staff_user_id
+
+Ref: dim_step_instance.step_instance_step_id > dim_step.step_id
+Ref: dim_teacher_feedback_thread.tft_teacher_dw_id > dim_teacher.teacher_dw_id
+
+Ref: dim_content_academic_year.content_academic_year_id > dim_academic_year.academic_year_id
+Ref: dim_content_association.content_association_content_id > dim_content.content_id
+
+Ref: dim_content_student_association.content_student_association_student_id > dim_student.student_id
+Ref: dim_content_student_association.content_student_association_content_id > dim_content.content_id
+Ref: dim_content_student_association.content_student_association_class_id > dim_class.class_id
+
+Ref: dim_skill_association.skill_association_skill_id > dim_skill.skill_id
+Ref: dim_team_student_association.team_student_association_team_dw_id > dim_team.team_dw_id
+Ref: dim_team_student_association.team_student_association_student_dw_id > dim_student.student_dw_id
+
+Ref: dim_assignment_instance_student.ais_student_dw_id > dim_student.student_dw_id
+Ref: dim_assignment_instance_student.ais_instance_dw_id > dim_assignment_instance.assignment_instance_dw_id
+Ref: dim_assignment_instance.assignment_instance_assignment_dw_id > dim_assignment.assignment_dw_id
+
+Ref: dim_avatar_layer_customization.ala_avatar_id > dim_avatar.avatar_id
+Ref: dim_avatar_layer_customization.ala_layer_id > dim_avatar_layer.avatar_layer_id
+Ref: dim_avatar_customization.ac_avatar_id > dim_avatar.avatar_id
+
+Ref: dim_teacher_test_item_association.ttia_test_id > dim_teacher_test.tt_test_id
+Ref: dim_teacher_test_delivery_settings.ttds_test_id > dim_teacher_test.tt_test_id
+Ref: dim_teacher_test_candidate_association.ttca_test_id > dim_teacher_test.tt_test_id
+Ref: dim_teacher_test_blueprint_lesson_association.ttbla_lesson_id > dim_learning_objective.lo_id
+Ref: dim_teacher_test_blueprint.ttb_test_blueprint_class_id > dim_class.class_id
+
+
+
+Ref: dim_test_testpart_association.testpart_id > dim_testpart.id
+Ref: dim_test_testpart_association.tenant_id > dim_tenant.tenant_id
+Ref: dim_testpart_section_association.testpart_id > dim_testpart.id
+Ref: dim_testpart_section_association.tenant_id > dim_tenant.tenant_id
+Ref: dim_testpart.tenant_id > dim_tenant.tenant_id
+
+Ref: dim_course_subject_association.cs_course_id > dim_course.course_id
+Ref: dim_course_subject_association.cs_subject_id > dim_subject.subject_id
+Ref: dim_course_grade_association.cg_course_id > dim_course.course_id
+Ref: dim_course_grade_association.cg_grade_id > dim_grade.grade_id
+ref: dim_course_resource_activity_grade_association.craga_course_id > dim_course.course_id
+ref: dim_course_resource_activity_grade_association.craga_grade_id > dim_grade.grade_id
+ref: dim_course_resource_activity_grade_association.craga_activity_id > dim_learning_objective.lo_id
+ref: dim_course_resource_activity_grade_association.craga_activity_id > dim_interim_checkpoint.ic_id
+
+
+ref: dim_course_resource_activity_outcome_association.craoa_activity_id > dim_learning_objective.lo_id
+ref: dim_course_resource_activity_outcome_association.craoa_activity_id > dim_interim_checkpoint.ic_id
+Ref: dim_course_resource_activity_outcome_association.craoa_outcome_id > dim_outcome.outcome_id
+Ref: dim_course_resource_activity_outcome_association.craoa_curr_grade_id > dim_grade.grade_id
+Ref: dim_course_resource_activity_outcome_association.craoa_course_id > dim_course.course_id
+
+Ref: dim_course_additional_resource_activity_association.caraa_course_id > dim_course.course_id
+Ref: dim_course_additional_resource_activity_association.caraa_resource_activity_id > dim_learning_objective.lo_id
+Ref: dim_course_additional_resource_activity_association.caraa_resource_activity_id > dim_interim_checkpoint.ic_id
+
+Ref: dim_course_activity_container_grade_association.cacga_container_id > dim_course_activity_container.course_activity_container_id
+Ref: dim_course_activity_container_grade_association.cacga_course_id >  dim_course.course_id
+Ref: dim_course_activity_container_grade_association.cacga_grade >  dim_grade.grade_id
+
+Ref: dim_course_activity_grade_association.caga_course_id >  dim_course.course_id
+Ref: dim_course_activity_grade_association.caga_grade_id >  dim_grade.grade_id
+Ref: dim_course_activity_grade_association.caga_activity_id > dim_learning_objective.lo_id
+Ref: dim_course_activity_grade_association.caga_activity_id > dim_interim_checkpoint.ic_id
+
+Ref: dim_course_curriculum_association.cc_course_id > dim_course.course_id
+Ref: dim_course_curriculum_association.cc_curr_id > dim_curriculum.curr_id
+Ref: dim_course_curriculum_association.cc_curr_grade_id > dim_curriculum_grade.curr_grade_id
+
+ref: dim_course_content_repository_association.ccr_repository_id > dim_content_repository.content_repository_id
+Ref: dim_course_ability_test_association.cata_course_id > dim_course.course_id
+
+Ref: dim_course_activity_association.caa_activity_id > dim_learning_objective.lo_id
+Ref: dim_course_activity_association.caa_activity_id > dim_interim_checkpoint.ic_id
+Ref: dim_course_activity_association.caa_course_id > dim_course.course_id
+
+Ref: dim_course_activity_container.course_activity_container_course_id > dim_course.course_id
+Ref: dim_course_activity_container_domain.cacd_course_id > dim_course.course_id
+
+Ref: dim_course_activity_outcome_association.caoa_course_id > dim_course.course_id
+Ref: dim_course_activity_outcome_association.caoa_outcome_id > dim_outcome.outcome_id
+
+Ref: dim_interim_checkpoint_rules.ic_rule_dw_id > dim_interim_checkpoint.ic_dw_id
+Ref: dim_learning_objective_association.lo_association_lo_id > dim_learning_objective.lo_id
+
+ref: dim_curriculum_version.curriculum_version_curriculum_grade_id > dim_curriculum_grade.curr_grade_id
+ref: dim_curriculum_version.curriculum_version_curriculum_subject_id > dim_curriculum_subject.curr_subject_id
+
+ref:  dim_outcome_association.outcome_association_outcome_id > dim_outcome.outcome_id
+
+ref: dim_question_pool_association.question_pool_association_question_pool_dw_id > dim_question_pool.question_pool_dw_id
+ref: dim_question_pool_association.question_pool_association_question_code > dim_question.question_code
+
+ref: dim_pacing_guide.pacing_class_id > dim_class.class_id
+ref: dim_pacing_guide.pacing_course_id > dim_course.course_id
+ref: dim_pacing_guide.pacing_academic_year_id > dim_academic_calendar.academic_calendar_academic_year_id
+ref: dim_pacing_guide.pacing_academic_calendar_id > dim_academic_calendar.academic_calendar_id
+
+ref: dim_pacing_calendar.tennant > dim_tenant.tenant_id
+
+Ref: fact_activity_setting.fas_activity_id > dim_learning_objective.lo_id
+Ref: fact_activity_setting.fas_activity_id > dim_interim_checkpoint.ic_id
+Ref: fact_activity_setting.fas_grade_id > dim_grade.grade_id
+Ref: fact_activity_setting.fas_school_id > dim_school.school_id
+Ref: fact_activity_setting.fas_tenant_id > dim_tenant.tenant_id
+
+Ref: fact_adt_next_question.fanq_fle_ls_uuid > fact_learning_experience.fle_ls_id
+Ref: fact_adt_next_question.fanq_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_adt_next_question.fanq_grade_id > dim_grade.grade_id
+Ref: fact_adt_next_question.fanq_academic_year_id > dim_academic_year.academic_year_id
+
+Ref: fact_adt_student_report.fasr_fle_ls_dw_id  > fact_learning_experience.fle_dw_id
+Ref: fact_adt_student_report.fasr_tenant_dw_id  > dim_tenant.tenant_dw_id
+Ref: fact_adt_student_report.fasr_school_dw_id  > dim_school.school_dw_id
+Ref: fact_adt_student_report.fasr_grade_id  > dim_grade.grade_id
+Ref: fact_adt_student_report.fasr_academic_year_id  > dim_academic_year.academic_year_id
+
+
+Ref: fact_announcement.fa_role_dw_id > dim_role.role_dw_id
+Ref: fact_announcement.fa_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_announcement.fa_recipient_dw_id > dim_school.school_dw_id
+Ref: fact_announcement.fa_recipient_dw_id > dim_grade.grade_dw_id
+
+
+Ref: fact_assessment_answer_submitted.tenant_id > dim_tenant.tenant_id
+Ref: fact_assessment_answer_submitted.school_id > dim_school.school_id
+Ref: fact_assessment_answer_submitted.grade_id > dim_grade.grade_id
+Ref: fact_assessment_answer_submitted.test_level_id > dim_testpart.id
+Ref: fact_assessment_answer_submitted.test_level_version > dim_testpart.version
+Ref: fact_assessment_answer_submitted.test_level_section_id > dim_testpart_section_association.id
+
+
+Ref: fact_assessment_lock_action.tenant_id > dim_tenant.tenant_id
+Ref: fact_assessment_lock_action.school_id > dim_school.school_id
+Ref: fact_assessment_lock_action.test_level_id > dim_testpart.id
+Ref: fact_assessment_lock_action.test_level_version > dim_testpart.version
+
+Ref: fact_assignment_submission.assignment_submission_tenant_dw_id > dim_tenant.tenant_dw_id
+
+Ref: fact_badge_awarded.fba_grade_dw_id > dim_grade.grade_dw_id
+Ref: fact_badge_awarded.fba_badge_dw_id > dim_badge.bdg_dw_id
+Ref: fact_badge_awarded.fba_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_badge_awarded.fba_school_dw_id > dim_school.school_id
+Ref: fact_badge_awarded.fba_academic_year_dw_id > dim_academic_year.academic_year_dw_id
+Ref: fact_badge_awarded.fba_section_dw_id > dim_section.section_dw_id
+
+Ref: fact_candidate_assessment_progress.tenant_id > dim_tenant.tenant_id
+Ref: fact_candidate_assessment_progress.school_id > dim_school.school_id
+Ref: fact_candidate_assessment_progress.grade_id > dim_grade.grade_id
+Ref: fact_candidate_assessment_progress.test_id > dim_test_testpart_association.testpart_id
+Ref: fact_candidate_assessment_progress.test_version > dim_test_testpart_association.version
+Ref: fact_candidate_assessment_progress.test_level_id > dim_testpart.id
+Ref: fact_candidate_assessment_progress.test_level_version > dim_testpart.version
+Ref: fact_candidate_assessment_progress.test_level_section_id > dim_testpart_section_association.id
+
+Ref: fact_challenge_game_progress.fgc_tenant_id > dim_tenant.tenant_id
+Ref: fact_challenge_game_progress.fgc_school_id > dim_school.school_id
+ref: fact_challenge_game_progress.fgc_academic_year_id > dim_academic_year.academic_year_id
+
+Ref: fact_content_session.fcs_lo_dw_id > dim_learning_objective.lo_dw_id
+Ref: fact_content_session.fcs_grade_dw_id > dim_grade.grade_dw_id
+Ref: fact_content_session.fcs_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_content_session.fcs_school_dw_id > dim_school.school_dw_id
+Ref: fact_content_session.fcs_content_academic_year > dim_academic_year.academic_year_id
+Ref: fact_content_session.fcs_section_dw_id > dim_section.section_dw_id
+Ref: fact_content_session.fcs_lp_dw_id > dim_learning_path.learning_path_dw_id
+
+Ref: fact_ebook_progress.fep_tenant_id > dim_tenant.tenant_id
+Ref: fact_ebook_progress.fep_school_id > dim_school.school_id
+Ref: fact_ebook_progress.fep_grade_id > dim_grade.grade_id
+Ref: fact_ebook_progress.fep_lo_id > dim_learning_objective.lo_id
+
+
+ref: fact_experience_submitted.fes_lo_dw_id > dim_learning_objective.lo_dw_id
+ref: fact_experience_submitted.fes_section_dw_id > dim_section.section_dw_id
+ref: fact_experience_submitted.fes_subject_dw_id > dim_subject.subject_dw_id
+ref: fact_experience_submitted.fes_grade_dw_id > dim_grade.grade_dw_id
+ref: fact_experience_submitted.fes_tenant_dw_id > dim_tenant.tenant_dw_id
+ref: fact_experience_submitted.fes_school_dw_id > dim_school.school_dw_id
+ref: fact_experience_submitted.fes_lp_dw_id > dim_learning_path.learning_path_dw_id
+ref: fact_experience_submitted.fes_academic_year_dw_id > dim_academic_year.academic_year_dw_id
+
+
+
+Ref: fact_guardian_joint_activity.fgja_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_guardian_joint_activity.fgja_school_dw_id > dim_school.school_dw_id
+
+Ref: fact_inc_game.inc_game_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_inc_game.inc_game_school_dw_id > dim_school.school_dw_id
+Ref: fact_inc_game.inc_game_section_dw_id > dim_section.section_dw_id
+Ref: fact_inc_game.inc_game_lo_dw_id > dim_learning_objective.lo_dw_id
+Ref: fact_inc_game.inc_game_subject_dw_id > dim_subject.subject_dw_id
+Ref: fact_inc_game.inc_game_grade_dw_id > dim_grade.grade_dw_id
+Ref: fact_inc_game.inc_game_class_dw_id > dim_class.class_dw_id
+
+Ref: fact_inc_game_outcome.inc_game_outcome_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_inc_game_outcome.inc_game_outcome_lo_dw_id > dim_learning_objective.lo_dw_id
+
+Ref: fact_inc_game_session.inc_game_session_tenant_dw_id > dim_tenant.tenant_dw_id
+
+Ref: fact_item_purchase.fip_tenant_id > dim_tenant.tenant_id
+ref: fact_item_purchase.fip_school_id > dim_school.school_id
+ref: fact_item_purchase.fip_grade_id > dim_grade.grade_id
+ref: fact_item_purchase.fip_section_id > dim_section.section_id
+ref: fact_item_purchase.fip_academic_year_id > dim_academic_year.academic_year_id
+Ref: fact_item_purchase.fip_item_id > dim_avatar.avatar_id
+Ref: fact_item_purchase.fip_item_id > dim_avatar_layer.avatar_layer_id
+Ref: fact_item_purchase.fip_item_id > dim_marketplace_config.id
+
+
+Ref: fact_item_transaction.fit_tenant_id > dim_tenant.tenant_id
+Ref: fact_item_transaction.fit_school_id > dim_school.school_id
+Ref: fact_item_transaction.fit_grade_id > dim_grade.grade_id
+Ref: fact_item_transaction.fit_section_id  > dim_section.section_id
+Ref: fact_item_transaction.fit_academic_year_id > dim_academic_year.academic_year_id
+Ref: fact_item_transaction.fit_item_id > dim_avatar.avatar_id
+Ref: fact_item_transaction.fit_item_id > dim_avatar_layer.avatar_layer_id
+
+Ref: fact_learning_experience.fle_lo_dw_id> dim_learning_objective.lo_dw_id
+Ref: fact_learning_experience.fle_lo_dw_id > dim_interim_checkpoint.ic_dw_id
+Ref: fact_learning_experience.fle_subject_dw_id > dim_subject.subject_dw_id
+Ref: fact_learning_experience.fle_grade_dw_id > dim_grade.grade_dw_id
+Ref: fact_learning_experience.fle_curr_subject_dw_id > dim_curriculum_subject.curr_subject_dw_id
+Ref: fact_learning_experience.fle_curr_grade_dw_id > dim_curriculum_grade.curr_grade_dw_id
+Ref: fact_learning_experience.fle_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_learning_experience.fle_school_dw_id > dim_school.school_dw_id
+Ref: fact_learning_experience.fle_section_dw_id > dim_section.section_dw_id
+Ref: fact_learning_experience.fle_academic_year_dw_id > dim_academic_year.academic_year_dw_id
+Ref: fact_learning_experience.fle_class_dw_id > dim_class.class_dw_id
+Ref: fact_learning_experience.fle_material_id > dim_instructional_plan.instructional_plan_id
+Ref: fact_learning_experience.fle_term_dw_id > dim_term.term_dw_id
+
+Ref: fact_level_completed.flc_tenant_dw_id > dim_tenant.tenant_dw_id
+
+Ref: fact_levels_recommended.flr_tenant_dw_id > dim_tenant.tenant_dw_id
+
+Ref: fact_pathway_activity_completed.fpac_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_pathway_activity_completed.fpac_activity_dw_id > dim_learning_objective.lo_dw_id
+Ref: fact_pathway_activity_completed.fpac_activity_dw_id > dim_interim_checkpoint.ic_dw_id
+Ref: fact_pathway_activity_completed.fpac_course_activity_container_dw_id > dim_course_activity_container.course_activity_container_dw_id
+
+Ref: fact_pathway_leaderboard.fpl_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_pathway_leaderboard.fpl_grade_dw_id > dim_grade.grade_dw_id
+Ref: fact_pathway_leaderboard.fpl_academic_year_dw_id > dim_academic_year.academic_year_dw_id
+
+
+Ref: fact_pathway_learning_progress.learning_objective_dw_id > dim_learning_objective.lo_dw_id
+Ref: fact_pathway_learning_progress.learning_objective_dw_id > dim_interim_checkpoint.ic_dw_id
+Ref: fact_pathway_learning_progress.subject_dw_id > dim_subject.subject_dw_id
+Ref: fact_pathway_learning_progress.student_grade_dw_id > dim_grade.grade_dw_id
+Ref: fact_pathway_learning_progress.curriculum_subject_dw_id > dim_curriculum_subject.curr_subject_dw_id
+Ref: fact_pathway_learning_progress.curriculum_grade_dw_id > dim_curriculum_grade.curr_grade_dw_id
+Ref: fact_pathway_learning_progress.tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_pathway_learning_progress.school_dw_id > dim_school.school_dw_id
+Ref: fact_pathway_learning_progress.academic_year_dw_id > dim_academic_year.academic_year_dw_id
+Ref: fact_pathway_learning_progress.class_dw_id > dim_class.class_dw_id
+Ref: fact_pathway_learning_progress.material_id > dim_instructional_plan.instructional_plan_id
+Ref: fact_pathway_learning_progress.term_dw_id > dim_term.term_dw_id
+
+Ref: fact_pathway_placement.fpp_tenant_id > dim_tenant.tenant_id
+
+Ref: fact_pathway_target_progress.fptp_tenant_id > dim_tenant.tenant_id
+Ref: fact_pathway_target_progress.fptp_school_id > dim_school.school_id
+Ref: fact_pathway_target_progress.fptp_grade_id > dim_grade.grade_id
+
+Ref: fact_pathway_teacher_activity.fpta_tenant_id > dim_tenant.tenant_id
+Ref: fact_pathway_teacher_activity.fpta_activity_id > dim_learning_objective.lo_id
+Ref: fact_pathway_teacher_activity.fpta_activity_id > dim_interim_checkpoint.ic_id
+
+Ref: fact_skill_content_unavailable.scu_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_skill_content_unavailable.scu_lo_dw_id > dim_learning_objective.lo_dw_id
+Ref: fact_skill_content_unavailable.scu_skill_dw_id > dim_ccl_skill.ccl_skill_dw_id
+
+Ref: fact_student_activities.fsta_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_student_activities.fsta_school_dw_id > dim_school.school_dw_id
+Ref: fact_student_activities.fsta_grade_dw_id > dim_grade.grade_dw_id
+Ref: fact_student_activities.fsta_section_dw_id > dim_section.section_dw_id
+Ref: fact_student_activities.fsta_subject_dw_id > dim_subject.subject_dw_id
+Ref: fact_student_activities.fsta_academic_year_dw_id > dim_academic_year.academic_year_dw_id
+
+
+Ref: fact_student_certificate_awarded.fsca_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_student_certificate_awarded.fsca_academic_year_dw_id >  dim_academic_year.academic_year_dw_id
+Ref: fact_student_certificate_awarded.fsca_grade_dw_id > dim_grade.grade_dw_id
+
+Ref: fact_student_queries.tenant_id > dim_tenant.tenant_id
+Ref: fact_student_queries.school_id > dim_school.school_id
+Ref: fact_student_queries.grade_id > dim_grade.grade_id
+Ref: fact_student_queries.section_id > dim_section.section_id
+Ref: fact_student_queries.academic_year_id > dim_academic_year.academic_year_id
+Ref: fact_student_queries.activity_id > dim_learning_objective.lo_id
+
+
+Ref: fact_teacher_activities.fta_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_teacher_activities.fta_school_dw_id > dim_school.school_dw_id
+Ref: fact_teacher_activities.fta_grade_dw_id > dim_grade.grade_dw_id
+Ref:  fact_teacher_activities.fta_section_dw_id > dim_section.section_dw_id
+Ref: fact_teacher_activities.fta_subject_dw_id > dim_subject.subject_dw_id
+
+
+Ref: fact_teacher_task_center.tenant_id > dim_tenant.tenant_id
+Ref: fact_teacher_task_center.school_id > dim_school.school_id
+
+Ref: fact_teacher_test_candidate_progress.fttcp_test_delivery_id > dim_teacher_test_delivery_settings.ttds_test_delivery_id
+
+Ref: fact_tutor_session.fts_grade_dw_id > dim_grade.grade_dw_id
+Ref: fact_tutor_session.fts_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_tutor_session.fts_school_dw_id > dim_school.school_dw_id
+Ref: fact_tutor_session.fts_subject_dw_id > dim_curriculum_subject.curr_subject_dw_id
+Ref: fact_tutor_session.fts_activity_dw_id > dim_learning_objective.lo_dw_id
+Ref: fact_tutor_session.fts_course_activity_container_dw_id > dim_course_activity_container.course_activity_container_dw_id
+Ref: fact_tutor_session.fts_outcome_dw_id > dim_outcome.outcome_id
+
+
+Ref: fact_tutor_suggestions.fts_tenant_id > dim_tenant.tenant_id
+Ref: fact_tutor_user_context.ftc_grade_dw_id > dim_grade.grade_dw_id
+Ref: fact_tutor_user_context.ftc_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_tutor_user_context.ftc_school_dw_id > dim_school.school_dw_id
+Ref: fact_tutor_user_context.ftc_subject_dw_id > dim_curriculum_subject.curr_subject_dw_id
+
+Ref: fact_user_avatar.fua_grade_id > dim_grade.grade_id
+Ref: fact_user_avatar.fua_tenant_id > dim_tenant.tenant_id
+Ref: fact_user_avatar.fua_school_id > dim_school.school_id
+Ref: fact_user_avatar.fua_avatar_dw_id > dim_avatar.avatar_dw_id
+
+
+Ref: fact_user_heartbeat_hourly_aggregated.fuhha_role_dw_id > dim_role.role_dw_id
+Ref: fact_user_heartbeat_hourly_aggregated.fuhha_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_user_heartbeat_hourly_aggregated.fuhha_school_dw_id > dim_school.school_dw_id
+
+
+Ref: fact_user_login.ful_role_dw_id > dim_role.role_dw_id
+Ref: fact_user_login.ful_tenant_dw_id > dim_tenant.tenant_dw_id
+Ref: fact_user_login.ful_school_dw_id > dim_school.school_dw_id
+
+
+Ref: fact_weekly_goal.fwg_type_dw_id > dim_weekly_goal_type.weekly_goal_type_dw_id
+Ref: fact_weekly_goal.fwg_tenant_dw_id > dim_tenant.tenant_dw_id
+
+Ref: fact_weekly_goal_activity.fwga_completed_activity_id > dim_learning_objective.lo_id

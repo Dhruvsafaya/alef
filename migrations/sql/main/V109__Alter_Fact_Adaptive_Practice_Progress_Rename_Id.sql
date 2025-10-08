@@ -1,0 +1,1 @@
+ALTER TABLE fact_adaptive_practice_progress RENAME COLUMN id to uuid;

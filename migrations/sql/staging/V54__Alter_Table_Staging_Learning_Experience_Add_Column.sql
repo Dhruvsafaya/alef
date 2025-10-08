@@ -1,0 +1,1 @@
+alter table staging_learning_experience add column fle_is_additional_resource BOOLEAN default false;

@@ -1,0 +1,1 @@
+ALTER TABLE staging_pathway_placement ADD COLUMN  fpp_has_accelerated_domains BOOLEAN;

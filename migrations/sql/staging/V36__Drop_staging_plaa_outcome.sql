@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS rel_plaa_outcome;

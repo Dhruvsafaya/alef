@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS dim_avatar_layer (
+avatar_layer_dw_id BIGINT NOT NULL,
+avatar_layer_created_time TIMESTAMP,
+avatar_layer_dw_created_time TIMESTAMP,
+avatar_layer_updated_time TIMESTAMP,
+avatar_layer_dw_updated_time TIMESTAMP,
+avatar_layer_deleted_time TIMESTAMP,
+avatar_layer_id VARCHAR(36) NOT NULL,
+avatar_layer_status INT,
+avatar_layer_config_type VARCHAR(20),
+avatar_layer_type VARCHAR(20),
+avatar_layer_key VARCHAR(50),
+avatar_layer_value VARCHAR(50),
+avatar_layer_genders VARCHAR(36),
+avatar_layer_cost INT,
+avatar_layer_is_enabled BOOLEAN,
+avatar_layer_is_deleted BOOLEAN,
+avatar_layer_valid_from TIMESTAMP,
+avatar_layer_valid_till TIMESTAMP,
+avatar_layer_order INT
+);

@@ -1,0 +1,3 @@
+insert into alefdw.dim_teacher_test_delivery_settings
+    (ttds_dw_id, ttds_test_id, ttds_tenant_id, ttds_test_delivery_id, ttds_test_start_time, ttds_allow_late_submission, ttds_title, ttds_stars, ttds_randomized, ttds_delivery_status, ttds_status, ttds_created_time, ttds_dw_created_time)
+values (59054, '02d6d1f2-ff78-4e4d-bf8d-391f9c8d0ed0', '93e4949d-7eff-4707-9201-dac917a5e013',  '009d7a61-5da9-445a-9983-d41f5d2b52b8', '2025-02-25T00:00:00', true, 'الجهاز الدوري', 5,false ,'UPCOMING',1,'2025-02-25 07:47:38.761000',current_timestamp)

@@ -1,0 +1,4 @@
+--https://alefeducation.atlassian.net/browse/ALEF-68565
+update alefdw.dim_school_academic_year_association set saya_status=2 and saya_updated_time='2024-11-04 12:50:40.902000' where saya_dw_id=54397;
+insert into alefdw.dim_school_academic_year_association(saya_dw_id, saya_school_id, saya_academic_year_id, saya_status, saya_created_time, saya_updated_time, saya_dw_created_time, saya_dw_updated_time, saya_previous_academic_year_id, saya_type)
+VALUES(161324,'04716423-0fc1-4633-afed-37536265f045','7a1bec83-0904-40c5-a59e-b4534c43fa40',1,'2024-11-22 21:59:49.166000',null,'2024-11-22 21:59:49.166000',null,'757332fc-77fb-43b4-b0ad-bb3a63b9dc50','ROLLOVER');

@@ -1,0 +1,1 @@
+ALTER TABLE dim_course_additional_resource_activity_association ALTER COLUMN caraa_resource_activity_file_name type varchar(100)

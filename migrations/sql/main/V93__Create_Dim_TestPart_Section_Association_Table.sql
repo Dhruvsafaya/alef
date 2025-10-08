@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS dim_testpart_section_association (
+  dw_id BIGINT,
+  _trace_id VARCHAR(36),
+  tenant_id VARCHAR(36),
+  event_type VARCHAR(50),
+  created_time TIMESTAMP,
+  dw_created_time TIMESTAMP,
+  active_until TIMESTAMP,
+  status INT,
+  id VARCHAR(36),
+  title VARCHAR(768),
+  testpart_id VARCHAR(36),
+  testpart_version_id VARCHAR(36),
+  question_id VARCHAR(36),
+  question_code VARCHAR(100),
+  submission_mode VARCHAR(50),
+  navigation_mode VARCHAR(50),
+  time_limit_seconds INT,
+  shuffle_questions BOOLEAN,
+  type VARCHAR(50)
+);

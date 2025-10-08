@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS staging_item_purchase (
+    fip_dw_id BIGINT,
+    fip_created_time TIMESTAMP,
+    fip_dw_created_time TIMESTAMP,
+    fip_date_dw_id BIGINT,
+    fip_id VARCHAR(36),
+    fip_item_id VARCHAR(36),
+    fip_item_type VARCHAR(50),
+    fip_item_title VARCHAR(50),
+    fip_item_description VARCHAR(50),
+    fip_transaction_id VARCHAR(36),
+    fip_school_id VARCHAR(36),
+    fip_grade_id VARCHAR(36),
+    fip_section_id VARCHAR(36),
+    fip_academic_year_id VARCHAR(36),
+    fip_academic_year INTEGER,
+    fip_student_id VARCHAR(36),
+    fip_tenant_id VARCHAR(36),
+    fip_redeemed_stars INTEGER
+);

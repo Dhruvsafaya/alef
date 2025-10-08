@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS rel_pathway_level_activity_association;

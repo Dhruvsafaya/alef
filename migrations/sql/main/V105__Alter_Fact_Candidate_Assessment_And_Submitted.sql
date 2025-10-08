@@ -1,0 +1,2 @@
+ALTER TABLE fact_candidate_assessment_progress DROP COLUMN test_dw_id;
+ALTER TABLE fact_candidate_assessment_progress DROP COLUMN test_level_section_dw_id;

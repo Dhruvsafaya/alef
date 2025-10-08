@@ -1,0 +1,47 @@
+-- Issue reported by Masry https://alefeducation.atlassian.net/browse/ALEF-68053
+-- Reported to app https://alefeducation.atlassian.net/browse/ALEF-68813
+
+update alefdw.dim_admin set admin_school_dw_id=133555 where admin_id='1c773a04-0685-4585-88a0-507564270229' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1062 where admin_id='941c8c18-d978-4e77-8b39-6fa5b747fe83' and admin_created_time >='2024-09-16 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1133 where admin_id='5edcb21b-8fc3-49d8-bd35-c97c0c4e89e0' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1377 where admin_id='1a1fb3f5-12b5-482d-9033-f301d041467b' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1375 where admin_id='82a611fb-c29a-49d0-ba79-42dafc9d474f' and admin_created_time >='2024-09-16 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=164 where admin_id='e92427c9-0baf-4ead-9e5d-a784dfccaa0c' and admin_created_time >='2024-09-16 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=168 where admin_id='f50d16aa-b545-44e3-a2e5-245d5045f094' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=204 where admin_id='769f97e6-04a7-4857-bfef-4f7ac358f621' and admin_created_time >='2024-09-16 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=132787 where admin_id='bd360608-5329-47ae-9f9f-8695134c6243' and admin_created_time >='2024-10-23 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=130620 where admin_id='e6e9af15-2378-4cc3-a68a-fd58c1007c1e' and admin_created_time >='2024-11-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=137526 where admin_id='f462ed97-4c95-4c99-9d44-931a23217288' and admin_created_time >='2024-11-07 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=133555 where admin_id='13b5186a-b68b-48e2-bee8-abe7e2f0b656' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1079 where admin_id='6610cc0d-6d3e-45b0-9bd1-05d696de984e' and admin_created_time >='2024-09-16 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=133531 where admin_id='6fd7aa35-e555-4ee9-be32-19557a3ef28d' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=26 where admin_id='702e7ea8-78c2-4c56-904c-c081a58fe7ff' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=133555 where admin_id='a5f6f4da-272d-4cb7-80e9-e9acb9f33452' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1097 where admin_id='de5dc0b8-bf06-4bd3-9223-a4f5473c46b6' and admin_created_time >='2024-09-16 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=133579 where admin_id='83fa6583-4a0d-4dd5-bf2d-3e4ce47f90ad' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=133555 where admin_id='4b033da1-4b23-4ae0-ab17-2d03320aa0b0' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=133561 where admin_id='fd788002-549a-4bb9-bfe5-7f4c6351116c' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1489 where admin_id='0a1ec892-40ed-4349-a252-40fba69fa693' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=204 where admin_id='f7a1752c-0fe8-4995-b2eb-841189e1f09d' and admin_created_time >='2024-09-19 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1220 where admin_id='2f1f335d-9998-4d07-8f40-1ec0e95b1278' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=133561 where admin_id='9bf75e07-3440-4539-b7cf-412145e949c3' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=133561 where admin_id='2159bc28-8082-440c-99fc-72fb398440f3' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1077 where admin_id='fef75c37-3e2e-4633-8e85-019029e263b2' and admin_created_time >='2024-09-19 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=132787 where admin_id='92543e62-3f66-4e09-a787-ee1e45eb4fbb' and admin_created_time >='2024-09-19 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=131728 where admin_id='85fc5a53-ea9b-4c53-9481-2fdc833a499d' and admin_created_time >='2024-10-25 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=133555 where admin_id='b7f168e3-fe3a-4b21-b1d2-15e5e32509bc' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=2 where admin_id='8e73c6b4-dd3a-425d-b080-4fd492c74605' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1167 where admin_id='edcfb224-b3ab-40b9-80b7-b63bd94e6056' and admin_created_time >='2024-09-19 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=133531 where admin_id='08b7c5c7-adf3-48b8-9b13-b8e841b2a0d7' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1534 where admin_id='4b14f816-f51e-457b-b634-f92caa0d28bd' and admin_created_time >='2024-10-02 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=280 where admin_id='cf48836d-c9c0-4bb8-a666-f99e0533ab51' and admin_created_time >='2024-09-16 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=131740 where admin_id='ce10d2b0-3a2b-4293-adc1-6a85167a8519' and admin_created_time >='2024-10-21 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=131728 where admin_id='89de4e46-9441-4a50-879d-3d6239808506' and admin_created_time >='2024-10-25 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=137526 where admin_id='bee58eaa-1f0b-4b2f-a179-0e3a3da8b0ef' and admin_created_time >='2024-11-08 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=139305 where admin_id='fdfd02f6-0d3f-4734-b72d-87a84f1a4cc6' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1167 where admin_id='83dfbb6d-de25-4f17-ac11-ec5c28f7d95a' and admin_created_time >='2024-09-19 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1095 where admin_id='924cb270-925c-4433-bd3a-029a0ce4ec8a' and admin_created_time >='2024-09-19 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=10769 where admin_id='293105bc-273d-41e5-9d18-ad764f144b0f' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=1446 where admin_id='dcb3861d-2e18-4737-b95b-c8fedbccbf3a';
+update alefdw.dim_admin set admin_school_dw_id=133579 where admin_id='e0a88236-bd37-4ee2-970d-30a3e446dc64' and admin_created_time >='2024-09-04 00:00:00.000000';
+update alefdw.dim_admin set admin_school_dw_id=137526 where admin_id='c56820a2-052e-4117-b388-365068d84c86' and admin_created_time >='2024-11-08 00:00:00.000000';

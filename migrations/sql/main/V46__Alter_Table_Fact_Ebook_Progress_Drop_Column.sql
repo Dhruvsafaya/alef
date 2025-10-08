@@ -1,0 +1,1 @@
+ALTER TABLE fact_ebook_progress DROP COLUMN fep_content_dw_id;

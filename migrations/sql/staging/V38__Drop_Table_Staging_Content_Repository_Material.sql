@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS rel_content_repository_material_association;

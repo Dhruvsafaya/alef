@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS rel_staff_user (rel_staff_user_dw_id BIGINT,
+                                           staff_user_event_type VARCHAR(50),
+                                           staff_user_created_time TIMESTAMP,
+                                           staff_user_dw_created_time TIMESTAMP,
+                                           staff_user_active_until TIMESTAMP,
+                                           staff_user_status INT,
+                                           staff_user_id VARCHAR(36),
+                                           staff_user_onboarded BOOLEAN,
+                                           staff_user_expirable BOOLEAN DEFAULT FALSE,
+                                           staff_user_exclude_from_report BOOLEAN DEFAULT FALSE,
+                                           staff_user_avatar VARCHAR(100),
+                                           staff_user_enabled BOOLEAN
+                                          );
+
+CREATE TABLE IF NOT EXISTS rel_staff_user_school_role_association (susra_dw_id BIGINT,
+                                                                   susra_event_type VARCHAR(50),
+                                                                   susra_staff_id VARCHAR(36),
+                                                                   susra_school_id VARCHAR(36),
+                                                                   susra_role_name VARCHAR(50),
+                                                                   susra_role_uuid VARCHAR(36),
+                                                                   susra_organization VARCHAR(50),
+                                                                   susra_status INT,
+                                                                   susra_created_time TIMESTAMP,
+                                                                   susra_dw_created_time TIMESTAMP,
+                                                                   susra_active_until TIMESTAMP);

@@ -1,0 +1,2 @@
+ALTER TABLE staging_tutor_challenge_question_answer ADD COLUMN ftcqa_user_attempt_source varchar(20);
+ALTER TABLE staging_tutor_challenge_question_answer ADD COLUMN ftcqa_user_attempt_id varchar(36);

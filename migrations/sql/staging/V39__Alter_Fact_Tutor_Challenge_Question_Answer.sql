@@ -1,0 +1,1 @@
+ALTER TABLE staging_tutor_challenge_question_answer RENAME COLUMN ftcqg_bot_question_id to ftcqa_bot_question_id;

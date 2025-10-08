@@ -1,0 +1,1 @@
+ALTER TABLE rel_pathway_target DROP COLUMN rel_pt_dw_id;

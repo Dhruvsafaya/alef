@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS rel_dw_id_mappings_v2;
+DROP TABLE IF EXISTS rel_dw_id_mappings_v22;
+DROP TABLE IF EXISTS rel_pathway_target_v2;
+DROP TABLE IF EXISTS rel_pathway_target_v22;
+DROP TABLE IF EXISTS rel_staff_user_school_role_association_v2;
+DROP TABLE IF EXISTS rel_staff_user_v2;
+DROP TABLE IF EXISTS rel_user_v2;
+DROP TABLE IF EXISTS staging_activity_setting_v2;
+DROP TABLE IF EXISTS staging_item_purchase_v2;

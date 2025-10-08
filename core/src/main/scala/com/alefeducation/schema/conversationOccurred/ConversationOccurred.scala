@@ -1,0 +1,25 @@
+package com.alefeducation.schema.conversationOccurred
+
+case class ConversationOccurred (createdOn: Long,
+                                 conversationId: String,
+                                 userId: String,
+                                 gender: String,
+                                 school: String,
+                                 schoolId: String,
+                                 grade: String,
+                                 gradeId: String,
+                                 curriculum: String,
+                                 curriculumId: String,
+                                 subject: String,
+                                 subjectId: String,
+                                 section: String,
+                                 sectionId: String,
+                                 mloId: String,
+                                 question: String,
+                                 answerId: String,
+                                 answer: String,
+                                 arabicAnswer: String,
+                                 source: String,
+                                 suggestions: Array[String],
+                                 learningSessionId: String
+                                )
