@@ -1,0 +1,1 @@
+ALTER TABLE staging_learning_experience ADD COLUMN fle_assessment_id VARCHAR(36);

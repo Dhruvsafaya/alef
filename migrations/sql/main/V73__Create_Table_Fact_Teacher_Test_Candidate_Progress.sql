@@ -1,0 +1,2 @@
+ALTER TABLE fact_teacher_test_candidate_progress DROP COLUMN fttcp_candidate_dw_id;
+ALTER TABLE fact_teacher_test_candidate_progress ADD COLUMN fttcp_candidate_dw_id bigint;
